@@ -1,0 +1,17 @@
+.form-control {
+    line-height: 2;
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+    margin-top: 0%;
+    font-size: 12px !important;
+}
+tr,th{
+	text-align: center !important;
+}
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    float: left;
+}

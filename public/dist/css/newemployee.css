@@ -1,0 +1,14 @@
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #b39c6a;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    border-top-color: #a18c5f !important;
+}
+.m-t-0{
+	font-family: font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif;
+}
+.well {
+    background-color: #ffffff !important;
+   
+}

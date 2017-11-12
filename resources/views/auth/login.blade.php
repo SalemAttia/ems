@@ -26,8 +26,25 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-
-<body class="hold-transition login-page" style="max-height: 400px;">
+<style type="text/css">
+  .login-box-body, .register-box-body {
+    background: #dfe2e5 !important;
+    padding: 20px !important;
+    color: #dfe2e5 !important;
+    opacity: 0.9 !important;
+}
+.login-box-msg, .register-box-msg {
+    color: #000 !important;
+    margin: 0;
+    text-align: center;
+    padding: 0 20px 20px 20px;
+}
+.btn-primary {
+    background-color: #444444 !important;
+    border-color: #444444 !important;
+}
+</style>
+<body class="hold-transition login-page" style="max-height: 400px; background: url(../public/dist/img/background.jpg) 100% 100%;">
 <div class="login-box" >
   <div class="login-logo">
     <a href="#"><b>Employee</b>EM</a>

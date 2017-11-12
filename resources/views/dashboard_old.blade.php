@@ -6,7 +6,7 @@
 @endsection
 @section('content')
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" dir="rtl">
+  <div class="content-wrapper" dir="rtl" style="background: url(../public/dist/img/background.jpg) 100% 100%; background-size: cover;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>

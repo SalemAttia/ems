@@ -79,6 +79,18 @@
                 </select>                                
               </div> <!-- form group [rows] -->
             </div>
+             <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">سنة التخرج</label>
+                <select id="pref-perpage" name="searchby[passing_year]" class="form-control">
+                <option value="" <?php if($searchingVals['passing_year'] == null) echo "selected"; ?>>الكل</option>
+                    <?php for($i= 1950; $i<=2020; $i++){ ?>
+                       <option value="{{$i}}" <?php if($searchingVals['passing_year'] == $i) echo "selected";?>>{{$i}}</option>
+                    <?php } ?>
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
 
             <div class="col-md-4" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
@@ -95,6 +107,62 @@
               </div> <!-- form group [rows] -->
             </div>
             <!-- row2 end -->
+
+             <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الحالة العملية</label>
+                <select id="pref-perpage" name="searchby[work_type]" class="form-control">
+                <option value="" <?php if($searchingVals['work_type'] == null) echo "selected"; ?>>الكل</option>
+                   @foreach (\App\department::get() as $work_type)
+                          <option value="{{$work_type->name}}" <?php if($searchingVals['work_type'] == $work_type->name) echo "selected"; ?> >{{$work_type->name}}</option>
+                 @endforeach
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
+
+            <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الفئة الوظيفية</label>
+                <select id="pref-perpage" name="searchby[work_section]" class="form-control">
+                <option value="" <?php if($searchingVals['work_section'] == null) echo "selected"; ?>>الكل</option>
+                   @foreach (\App\position::get() as $work_section)
+                          <option value="{{$work_section->name}}" <?php if($searchingVals['work_section'] == $work_section->name) echo "selected"; ?> >{{$work_section->name}}</option>
+                 @endforeach
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
+
+            <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">مكان العمل</label>
+                <select id="pref-perpage" name="searchby[work_place]" class="form-control">
+                <option value="" <?php if($searchingVals['work_place'] == null) echo "selected"; ?>>الكل</option>
+                   @foreach (\App\City::get() as $work_place)
+                          <option value="{{$work_place->name}}" <?php if($searchingVals['work_place'] == $work_place->name) echo "selected"; ?> >{{$work_place->name}}</option>
+                 @endforeach
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
+
+            <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">سنوات الخبرة</label>
+                <select id="pref-perpage" name="searchby[working_period]" class="form-control">
+                <option value="" <?php if($searchingVals['working_period'] == null) echo "selected"; ?>>الكل</option>
+                  <option value="لايوجد" <?php if($searchingVals['working_period'] == 'لايوجد') echo "selected";?>>لايوجد</option>
+                     <option value="سنة واحدة" <?php if($searchingVals['working_period'] == 'سنة واحدة') echo "selected";?>>سنة واحدة</option>
+                     <option value="سنتين" <?php if($searchingVals['working_period'] == 'سنتين') echo "selected";?>>سنتين</option>
+                     <option value="3 سنوات" <?php if($searchingVals['working_period'] == '3 سنوات') echo "selected";?>>3 سنوات</option>
+                     <option value="4 سنوات" <?php if($searchingVals['working_period'] == '4 سنوات') echo "selected";?>>4 سنوات</option>
+                     <option value="5 سنوات" <?php if($searchingVals['working_period'] == '5 سنوات') echo "selected";?>>5 سنوات</option>
+                     <option value="اكثر من 5 سنوات" <?php if($searchingVals['working_period'] == 'اكثر من 5 سنوات') echo "selected";?>>اكثر من 5 سنوات</option>
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
           </div>
 
 

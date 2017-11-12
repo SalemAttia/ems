@@ -15,6 +15,12 @@
                 <input value="{{$searchingVals['qualification']}}" type="hidden" name="searchby[qualification]">
                 <input value="{{$searchingVals['social_status']}}" type="hidden" name="searchby[social_status]">
                 <input value="{{$searchingVals['The_owners_of_inspiration']}}" type="hidden" name="searchby[The_owners_of_inspiration]">
+
+                <input value="{{$searchingVals['passing_year']}}" type="hidden" name="searchby[passing_year]">
+                <input value="{{$searchingVals['working_period']}}" type="hidden" name="searchby[working_period]">
+                <input value="{{$searchingVals['work_type']}}" type="hidden" name="searchby[work_type]">
+                <input value="{{$searchingVals['work_section']}}" type="hidden" name="searchby[work_section]">
+                <input value="{{$searchingVals['work_place']}}" type="hidden" name="searchby[work_place]">
                 
                <button style="" type="submit" class="btn btn-primary pull-right">
                   Export to Excel
@@ -28,6 +34,11 @@
                 <input value="{{$searchingVals['qualification']}}" type="hidden" name="searchby[qualification]">
                 <input value="{{$searchingVals['social_status']}}" type="hidden" name="searchby[social_status]">
                 <input value="{{$searchingVals['The_owners_of_inspiration']}}" type="hidden" name="searchby[The_owners_of_inspiration]">
+                <input value="{{$searchingVals['passing_year']}}" type="hidden" name="searchby[passing_year]">
+                <input value="{{$searchingVals['working_period']}}" type="hidden" name="searchby[working_period]">
+                <input value="{{$searchingVals['work_type']}}" type="hidden" name="searchby[work_type]">
+                <input value="{{$searchingVals['work_section']}}" type="hidden" name="searchby[work_section]">
+                <input value="{{$searchingVals['work_place']}}" type="hidden" name="searchby[work_place]">
                 <button style="" type="submit" class="btn btn-primary pull-left">
                   Export to PDF
                 </button>

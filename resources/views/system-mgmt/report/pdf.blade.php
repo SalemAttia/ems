@@ -64,6 +64,7 @@
             @foreach ($employees as $employee)
                 
                 <tr role="row" class="odd">
+                  
                   <td>{{ $employee['الاسم'] }} {{$employee['الاوسط']}} {{$employee['العائلة']}} </td>
                   <td>{{ $employee['العنوان'] }}</td>
                   <td>{{ $employee['الجنسية'] }}</td>

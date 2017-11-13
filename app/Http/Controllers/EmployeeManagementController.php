@@ -266,10 +266,12 @@ class EmployeeManagementController extends Controller
         if(count($item) > 0){
             for ($i=0; $i < count($item); $i++) {
 
-                if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place'){
+                if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place'|| $item[$i] == 'qualification'){
                      $ids = null;
                   if($item[$i] == 'passing_year'){
                     $ids = education::where('passing_year','=',$val[$i])->select('employee_id')->get();
+                  }elseif($item[$i] == 'qualification'){
+                    $ids = education::where('degree_name','=',$val[$i])->select('employee_id')->get();
                   }
                   elseif($item[$i] == 'working_period'){
                     $ids = workexprince::where('working_period','=',$val[$i])->select('employee_id')->get();

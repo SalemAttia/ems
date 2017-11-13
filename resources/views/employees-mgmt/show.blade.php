@@ -25,9 +25,7 @@
               <li class="list-group-item">
                 <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-users"></i> الحالة الاجتماعية </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->social_status}}</a>
               </li>
-              <li class="list-group-item">
-                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-graduation-cap"></i> المؤهل </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->qualification}}</a>
-              </li>
+              
 
               <li class="list-group-item">
                 <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-phone"></i> رقم الجوال </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->phone1}}</a>

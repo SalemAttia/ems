@@ -14,20 +14,34 @@
          {{ csrf_field() }}
           <div class="box-body" style="display: block;">
             <div class="row">
-              <div class="col-md-4" style="float: right;">
+            <input type="hidden" name="searchby[jobtitle]" value="">
+             <div class="col-md-4" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الفئة الوظيفية</label>
+                <select id="pref-perpage" name="searchby[work_section]" class="form-control">
+                <option value="" <?php if($searchingVals['work_section'] == null) echo "selected"; ?>>الكل</option>
+                   @foreach (\App\position::get() as $work_section)
+                          <option value="{{$work_section->name}}" <?php if($searchingVals['work_section'] == $work_section->name) echo "selected"; ?> >{{$work_section->name}}</option>
+                 @endforeach
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
+
+             <!--  <div class="col-md-4" style="float: right;">
                 <div class="form-group" dir="rtl">
                   <label for="inputfirstname" class="col-sm-12 control-label" style="float: right;">الفئة الوظيفية</label>
                   <div class="col-sm-12" style="float: right;">
                      
                       <select name="searchby[jobtitle]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
-                       <option value="" <?php if($searchingVals['jobtitle'] == null) echo "selected"; ?>>الكل</option>
+                       <option value="" php if($searchingVals['jobtitle'] == null) echo "selected"; ?>>الكل</option>
                          @foreach(\App\position::get() as $position)
-                        <option value="{{$position->name}}" <?php if($searchingVals['jobtitle'] == $position->name) echo "selected";?> >{{$position->name}}</option>
+                        <option value="{{$position->name}}" php if($searchingVals['jobtitle'] == $position->name) echo "selected";?> >{{$position->name}}</option>
                         @endforeach
                       </select>
                   </div>
                 </div>
-              </div>
+              </div> -->
               
             <!--   <div class="col-md-4" style="float: right;">
                 <div class="form-group" style="padding: 6px 12px;">
@@ -44,11 +58,11 @@
 
              <div class="col-md-4" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
-                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الجنس</label>
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">النوع</label>
                 <select id="pref-perpage" class="form-control" name="searchby[gender]">
                 <option value="" <?php if($searchingVals['gender'] == null) echo "selected"; ?>>الكل</option>
-                  <option value="رجل" <?php if($searchingVals['gender'] == 'رجل') echo "selected"; ?> >رجل</option>
-                  <option value="امرأة" <?php if($searchingVals['gender'] == 'امرأة') echo "selected"; ?> >امرأة</option>
+                  <option value="رجل" <?php if($searchingVals['gender'] == 'رجل') echo "selected"; ?> >ذكر</option>
+                  <option value="امرأة" <?php if($searchingVals['gender'] == 'امرأة') echo "selected"; ?> >انثى</option>
                   
 
                 </select>                                
@@ -121,18 +135,7 @@
               </div> <!-- form group [rows] -->
             </div>
 
-            <div class="col-md-4" style="float: right;">
-              <div class="form-group" style="padding: 6px 12px;">
-                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الفئة الوظيفية</label>
-                <select id="pref-perpage" name="searchby[work_section]" class="form-control">
-                <option value="" <?php if($searchingVals['work_section'] == null) echo "selected"; ?>>الكل</option>
-                   @foreach (\App\position::get() as $work_section)
-                          <option value="{{$work_section->name}}" <?php if($searchingVals['work_section'] == $work_section->name) echo "selected"; ?> >{{$work_section->name}}</option>
-                 @endforeach
-                  
-                </select>                                
-              </div> <!-- form group [rows] -->
-            </div>
+           
 
             <div class="col-md-4" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">

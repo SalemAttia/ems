@@ -56,7 +56,7 @@
                 <th width="">تاريخ الميلاد</th>
                 <th width="">رقم التليفون</th>
                 <th width="">الحالة الاجتماعية</th>
-                <th width="">المؤهل</th>
+                <!-- <th width="">المؤهل</th> -->
                          
               </tr>
             </thead>
@@ -71,7 +71,7 @@
                   <td>{{ $employee['تاريخ'] }}</td>
                   <td>{{ $employee['الهاتف'] }}</td>
                   <td>{{ $employee['الحالة'] }}</td>
-                  <td>{{ $employee['المؤهل'] }}</td>
+               
                  
               </tr>
             @endforeach

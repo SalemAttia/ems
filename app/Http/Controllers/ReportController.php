@@ -152,10 +152,12 @@ class ReportController extends Controller
         }
         if(count($item) > 0){
             for ($i=0; $i < count($item); $i++) { 
-            if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place'){
+            if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place' || $item[$i] == 'qualification'){
                      $ids = null;
                   if($item[$i] == 'passing_year'){
                     $ids = education::where('passing_year','=',$val[$i])->select('employee_id')->get();
+                  }elseif($item[$i] == 'qualification'){
+                    $ids = education::where('degree_name','=',$val[$i])->select('employee_id')->get();
                   }
                   elseif($item[$i] == 'working_period'){
                     $ids = workexprince::where('working_period','=',$val[$i])->select('employee_id')->get();
@@ -184,7 +186,7 @@ class ReportController extends Controller
 
     private function getExportingData($constraints) {
           $query = DB::table('employees')->select('employees.id as التسلسل','employees.firstname as الاسم الوال','employees.last_name as العائلة', 'employees.middlename as الاوسط', 
-        'employees.nationality as الجنسية','employees.birthdate as تاريخ الميلاد','employees.email as الايميل','employees.address as العنوان الاساسى', 'employees.address2 as العنوان المؤقت','employees.phone1 as الهاتف المتحرك','employees.phone2 as الهاتف المتحرك 2','employees.jobtitle as الفئة الوظيفية','employees.shortdesc as نبذه','employees.social_status as الحالة الاجتماعية', 'employees.qualification as المؤهل');
+        'employees.nationality as الجنسية','employees.birthdate as تاريخ الميلاد','employees.email as الايميل','employees.address as العنوان الاساسى', 'employees.address2 as العنوان المؤقت','employees.phone1 as الهاتف المتحرك','employees.phone2 as الهاتف2 المتحرك 2','employees.shortdesc as نبذه','employees.social_status as الحالة الاجتماعية');
 
         $fields = array_keys($constraints);
 
@@ -204,10 +206,12 @@ class ReportController extends Controller
         }
         if(count($item) > 0){
             for ($i=0; $i < count($item); $i++) { 
-            if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place'){
+            if($item[$i] == 'passing_year' || $item[$i] == 'working_period' || $item[$i] == 'work_type' || $item[$i] == 'work_section' || $item[$i] == 'work_place'|| $item[$i] == 'qualification'){
                      $ids = null;
                   if($item[$i] == 'passing_year'){
                     $ids = education::where('passing_year','=',$val[$i])->select('employee_id')->get();
+                  }elseif($item[$i] == 'qualification'){
+                    $ids = education::where('degree_name','=',$val[$i])->select('employee_id')->get();
                   }
                   elseif($item[$i] == 'working_period'){
                     $ids = workexprince::where('working_period','=',$val[$i])->select('employee_id')->get();

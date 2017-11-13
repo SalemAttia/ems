@@ -140,7 +140,8 @@
                     </div>
                   </div>
                   
-                  <div class="col-sm-6 col-xs-6" style="float: right;">
+                  <input type="hidden" name="jobtitle" value="null">
+                 <!--  <div class="col-sm-6 col-xs-6" style="float: right;">
                     <div class="form-group">
                       <label for="phone">الفئة الوظيفية<sup class="color-red ">*</sup></label>
                       <select name="jobtitle" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
@@ -149,11 +150,11 @@
                         @endforeach
                       </select>
                     </div>
-                  </div>
+                  </div> -->
                  
                   
-
-                   <div class="col-sm-6 col-xs-6" style="float: left;">
+                   <input type="hidden" name="qualification" value="null">
+                   <!-- <div class="col-sm-6 col-xs-6" style="float: left;">
                     <div class="form-group" >
                       <label for="dept_id">المؤهل<sup class="color-red "></sup></label>
 
@@ -164,7 +165,7 @@
                       </select>
 
                     </div>
-                  </div>
+                  </div> -->
                 
                 </div>
 

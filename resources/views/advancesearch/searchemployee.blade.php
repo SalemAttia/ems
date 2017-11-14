@@ -4,10 +4,7 @@
             <div class="col-sm-12">
               <h3 class="box-title"></h3>
             </div>
-            <div class="col-sm-4">
-              <a style="background: #b39c6a;border: #a18c5f;" class="btn btn-primary pull-left" href="{{ route('employee-management.create') }}">اضافة موظف</a>
-              <a style="background: #b39c6a;border: #a18c5f; margin-left: 2%;" class="btn btn-primary pull-left" href="{{route('advancesearch.index')}}">بحث متقدم <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
-            </div>
+            
           </div>
         </div>
         <!-- /.box-header -->
@@ -21,13 +18,44 @@
             </div>
           </div>
           <!-- /.box-header -->
-           <form method="POST" action="{{ route('employee-management.search') }}">
+           <form method="POST" action="{{ route('advancesearch.search') }}">
          {{ csrf_field() }}
           <div class="box-body" style="display: block;">
             <div class="row">
+             <!-- new edits -->
+             <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الهاتف المتحرك</label>
+                <input type="number" class="form-control" name="searchby[phone1]" value="{{$searchingVals['phone1']}}">
+                                           
+              </div> <!-- form group [rows] -->
+            </div>
 
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">العمر</label>
+                <input type="number" class="form-control" name="searchby[age]" value="{{$searchingVals['age']}}">
+                                           
+              </div> <!-- form group [rows] -->
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
+              <div class="form-group" style="padding: 6px 12px;">
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">الجنسية</label>
+                <select id="pref-perpage" name="searchby[nationality]" class="form-control">
+                <option value="" <?php if($searchingVals['nationality'] == null) echo "selected"; ?>>الكل</option>
+                @if($searchingVals['nationality'] != null)
+                <option value="$searchingVals['nationality']" <?php if($searchingVals['nationality'] != null) echo "selected"; ?>>{{$searchingVals['nationality']}}</option>
+                @endif
+                @include('partial.countries')
+                  
+                </select>                                
+              </div> <!-- form group [rows] -->
+            </div>
+
+            <!-- end edits -->
                   <input type="hidden" name="searchby[jobtitle]" value="">
-             <div class="col-md-4" style="float: right;">
+             <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">الفئة الوظيفية</label>
                 <select id="pref-perpage" name="searchby[work_section]" class="form-control">
@@ -40,7 +68,7 @@
               </div> <!-- form group [rows] -->
             </div>
 
-             <!--  <div class="col-md-4" style="float: right;">
+             <!--  <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
                 <div class="form-group" dir="rtl">
                   <label for="inputfirstname" class="col-sm-12 control-label" style="float: right;">الفئة الوظيفية</label>
                   <div class="col-sm-12" style="float: right;">
@@ -55,7 +83,7 @@
                 </div>
               </div> -->
               
-            <!--   <div class="col-md-4" style="float: right;">
+            <!--   <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
                 <div class="form-group" style="padding: 6px 12px;">
                   <label class="filter-col" style="margin-right:0;" for="pref-perpage">مكان العمل</label>
                   <select id="pref-perpage" name="searchby[place]" class="form-control">
@@ -68,7 +96,7 @@
                 </div> <!-- form group [rows] -->
               <!-- </div>  -->
 
-             <div class="col-md-4" style="float: right;">
+             <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">النوع</label>
                 <select id="pref-perpage" class="form-control" name="searchby[gender]">
@@ -80,7 +108,7 @@
                 </select>                                
               </div> <!-- form group [rows] -->
             </div>
-            <div class="col-md-4" style="float: right;">
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">الحالة الاجتماعية</label>
                 <select id="pref-perpage" name="searchby[social_status]" class="form-control">
@@ -93,7 +121,7 @@
                 </select>                                
               </div> <!-- form group [rows] -->
             </div>
-            <div class="col-md-4" style="float: right;">
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">المؤهل</label>
                 <select id="pref-perpage" name="searchby[qualification]" class="form-control">
@@ -105,7 +133,7 @@
                 </select>                                
               </div> <!-- form group [rows] -->
             </div>
-             <div class="col-md-4" style="float: right;">
+             <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">سنة التخرج</label>
                 <select id="pref-perpage" name="searchby[passing_year]" class="form-control">
@@ -118,7 +146,7 @@
               </div> <!-- form group [rows] -->
             </div>
 
-            <div class="col-md-4" style="float: right;">
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">أصحاب الهمم </label>
 
@@ -134,7 +162,7 @@
             </div>
             <!-- row2 end -->
 
-             <div class="col-md-4" style="float: right;">
+             <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">الحالة العملية</label>
                 <select id="pref-perpage" name="searchby[work_type]" class="form-control">
@@ -149,7 +177,7 @@
 
            
 
-            <div class="col-md-4" style="float: right;">
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">مكان العمل</label>
                 <select id="pref-perpage" name="searchby[work_place]" class="form-control">
@@ -162,7 +190,7 @@
               </div> <!-- form group [rows] -->
             </div>
 
-            <div class="col-md-4" style="float: right;">
+            <div class="col-md-4 col-sm-4 col-xs-6" style="float: right;">
               <div class="form-group" style="padding: 6px 12px;">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">سنوات الخبرة</label>
                 <select id="pref-perpage" name="searchby[working_period]" class="form-control">
@@ -178,6 +206,8 @@
                 </select>                                
               </div> <!-- form group [rows] -->
             </div>
+
+           
            
 
             </div>

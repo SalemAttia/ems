@@ -23,6 +23,9 @@ Route::resource('user-management', 'UserManagementController');
 Route::resource('employee-management', 'EmployeeManagementController');
 Route::post('employee-management/search', 'EmployeeManagementController@search')->name('employee-management.search');
 
+Route::resource('advancesearch', 'advancesearch');
+Route::post('advancesearch/search', 'advancesearch@search')->name('advancesearch.search');
+
 Route::resource('system-management/department', 'DepartmentController');
 Route::post('system-management/department/search', 'DepartmentController@search')->name('department.search');
 

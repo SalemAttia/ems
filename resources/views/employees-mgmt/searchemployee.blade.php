@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-4">
               <a style="background: #b39c6a;border: #a18c5f;" class="btn btn-primary pull-left" href="{{ route('employee-management.create') }}">اضافة موظف</a>
-              <a style="background: #b39c6a;border: #a18c5f; margin-left: 2%;" class="btn btn-primary pull-left" href="{{ url('/advancesearch') }}">بحث متقدم <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+              <a style="background: #b39c6a;border: #a18c5f; margin-left: 2%;" class="btn btn-primary pull-left" href="#">بحث متقدم <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
             </div>
           </div>
         </div>

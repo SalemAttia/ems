@@ -24,7 +24,7 @@
                   <div class="title">
                     <a target="_blank" href="{{url('employee-management/'.$employee->id)}}">{{ $employee->firstname }} {{$employee->middlename}}</a>
                   </div>
-                  <div class="desc">{{$employee->jobtitle}}</div>
+                  <div class="desc"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>{{$duties->duties}}</div>
                   <div class="desc">{{$employee->address}}</div>
                   <div class="desc">{{$employee->phone1}}</div>
                 </div>

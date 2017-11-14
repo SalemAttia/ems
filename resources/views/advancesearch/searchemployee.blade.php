@@ -167,7 +167,7 @@
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">الحالة العملية</label>
                 <select id="pref-perpage" name="searchby[work_type]" class="form-control">
                 <option value="" <?php if($searchingVals['work_type'] == null) echo "selected"; ?>>الكل</option>
-                   @foreach (\App\department::get() as $work_type)
+                   @foreach (\App\Department::get() as $work_type)
                           <option value="{{$work_type->name}}" <?php if($searchingVals['work_type'] == $work_type->name) echo "selected"; ?> >{{$work_type->name}}</option>
                  @endforeach
                   

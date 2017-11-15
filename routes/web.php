@@ -12,7 +12,17 @@
 
 
 Auth::routes();
+Route::get('/',function(){
+	return view('home');
+});
 
+Route::group(['prefix' => 'company'],function()
+{
+   Route::get('/', 'DashboardController@index');
+});
+
+Route::group(['prefix' => 'admin'],function()
+{
 Route::get('/', 'DashboardController@index');
 // Route::get('/system-management/{option}', 'SystemMgmtController@index');
 Route::get('/profile', 'ProfileController@index');
@@ -53,3 +63,4 @@ Route::get('download/cvs/{name}', 'EmployeeManagementController@download');
 Route::resource('system-management/degree', 'DegreeController');
 Route::resource('system-management/position', 'PositionController');
 Route::resource('system-management/social', 'socialController');
+});

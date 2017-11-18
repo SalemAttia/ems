@@ -115,7 +115,8 @@ class CompanyManagementController extends Controller
         $input = [
             'username' => $request['username'],
             'firstname' => $request['firstname'],
-            'lastname' => $request['lastname']
+            'lastname' => $request['lastname'],
+            'email' => $request['email']
         ];
         if ($request['password'] != null && strlen($request['password']) > 0) {
             $constraints['password'] = 'required|min:6|confirmed';

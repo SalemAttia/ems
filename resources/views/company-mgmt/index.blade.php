@@ -1,4 +1,4 @@
-@extends('users-mgmt.base')
+@extends('company-mgmt.base')
 @section('action-content')
     <!-- Main content -->
    

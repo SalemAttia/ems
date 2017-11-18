@@ -1,20 +1,20 @@
-@extends('users-mgmt.base')
+@extends('company-mgmt.base')
 
 @section('action-content')
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">تعديل مستخدم</div>
+                <div class="panel-heading">تعديل شركة</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('user-management.update', ['id' => $user->id]) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('company-management.update', ['id' => $user->id]) }}">
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             
 
                              <div class="col-md-12 " style="float: right;">
-                             <label for="username" class="control-label">اسم المستخدم</label>
+                             <label for="username" class="control-label">اسم الشركة</label>
                                 <input id="username" type="text" class="form-control" name="username" value="{{ $user->username }}" required autofocus>
 
                                 @if ($errors->has('username'))
@@ -23,35 +23,22 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                            
+                            <div class="col-md-12 " style="float: right;">
+                             <label for="email" class="control-label">اسم الشركة</label>
+                                <input id="email" type="text" class="form-control" name="email" value="{{ $user->email }}" required autofocus>
 
-                             <div class="col-md-12 " style="float: right;">
-                             <label for="firstname" class="control-label">الاسم الاول</label>
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ $user->firstname }}" required>
-
-                                @if ($errors->has('firstname'))
+                                @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('firstname') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                           
+                        
+                                <input id="firstname" type="hidden" class="form-control" name="firstname" value="{{ $user->firstname }}" required>
 
-                             <div class="col-md-12 " style="float: right;">
-                              <label for="lastname" class="control-label">الاسم الاخير</label>
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ $user->lastname }}" required>
+                                <input id="lastname" type="hidden" class="form-control" name="lastname" value="{{ $user->lastname }}" required>
 
-                                @if ($errors->has('lastname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lastname') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                            
 

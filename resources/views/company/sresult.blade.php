@@ -18,11 +18,11 @@
 
                 </div>
                 <div class="avatar">
-                  <img alt="" src="{{asset('/admin/'.$employee->picture)}}">
+                  <img alt="" src="{{asset('/company/'.$employee->picture)}}">
                 </div>
                 <div class="info">
                   <div class="title">
-                    <a target="_blank" href="{{url('admin/employee-management/'.$employee->id)}}">{{ $employee->firstname }} {{$employee->middlename}}</a>
+                    <a target="_blank" href="{{url('company/'.$employee->id)}}">{{ $employee->firstname }} {{$employee->middlename}}</a>
                   </div>
                   <div class="desc"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>{{$duties->duties}}</div>
                   <div class="desc">{{$employee->address}}</div>

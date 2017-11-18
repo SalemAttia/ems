@@ -1,4 +1,4 @@
-@extends('employees-mgmt.base')
+@extends('company.base')
 @section('action-content')
     <!-- Your Page Content Here -->
       <div class="row">
@@ -7,7 +7,7 @@
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="{{asset('/admin/'.$employee->picture)}}" alt="User profile picture">
+            <img class="profile-user-img img-responsive img-circle" src="{{asset('/company/'.$employee->picture)}}" alt="User profile picture">
 
             <h3 class="profile-username text-center">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</h3>
 

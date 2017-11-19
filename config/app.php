@@ -169,6 +169,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Anam\PhantomMagick\ConverterServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
         //
 
@@ -230,6 +231,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Converter' => Anam\PhantomMagick\Facades\Converter::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
 
 
     ],

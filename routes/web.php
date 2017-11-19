@@ -10,10 +10,15 @@
 */
 
 
+Route::get('/sms/{code}','HomeController@sms');
 
 Auth::routes();
 Route::get('/',function(){
 	return view('home');
+});
+
+Route::get('/home',function(){
+	return view('confirm');
 });
 
 Route::group(['prefix' => 'company'],function()

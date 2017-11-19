@@ -6,6 +6,8 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Nexmo\Laravel\Facade\Nexmo;
+use Nexmo\Client;
 
 class RegisterController extends Controller
 {
@@ -50,6 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'phone' => 'required|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -62,10 +65,45 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $code = $this->generatePIN();
+        //$phone = $data['phone'];
+        $phone = $data['phone'];
+        $sms = $this->sms($code,$phone);
+       
+           return User::create([
+            'username' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'code' => $code,
             'password' => bcrypt($data['password']),
-        ]);
+        ]); 
+       
+    }
+     /*
+     * generate bin code
+     */
+    protected function generatePIN($digits = 4){
+    $i = 0; //counter
+    $pin = ""; //our default pin is blank.
+    while($i < $digits){
+        //generate a random number between 0 and 9.
+        $pin .= mt_rand(0, 9);
+        $i++;
+    }
+    return $pin;
+   }
+
+   /*
+   * send sms
+   */
+    protected function sms($code,$phone)
+    {
+        // send message
+            $nexmo = app('Nexmo\Client');
+            $message = $nexmo->message()->send([
+                  'to' => $phone,
+                  'from' => '@ems',
+                  'text' => 'confirmation code '.$code
+                ]);
     }
 }

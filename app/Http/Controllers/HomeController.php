@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Nexmo\Laravel\Facade\Nexmo;
+use Nexmo\Client;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,5 +27,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function sms($code)
+    {
+        // send message
+            $nexmo = app('Nexmo\Client');
+            $message = $nexmo->message()->send([
+                  'to' => '201111573195',
+                  'from' => '@ems',
+                  'text' => 'confirmation code '.$code
+                ]);
     }
 }

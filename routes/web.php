@@ -9,17 +9,18 @@
 |
 */
 
-
 Route::get('/sms/{code}','HomeController@sms');
+Route::get('/sms','HomeController@newsms');
+Route::get('/home','HomeController@index');
+Route::get('/confirm','HomeController@confirm');
+Route::post('/confirm','HomeController@confirmPost');
+Route::get('/newCode','HomeController@newsms');
 
 Auth::routes();
 Route::get('/',function(){
 	return view('home');
 });
 
-Route::get('/home',function(){
-	return view('confirm');
-});
 
 Route::group(['prefix' => 'company'],function()
 {

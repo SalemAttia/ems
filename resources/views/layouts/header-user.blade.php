@@ -36,7 +36,7 @@
 
                 <p>
                   salem
-                  <small>admin</small>
+                  <small>User</small>
                 </p>
               </li>
              

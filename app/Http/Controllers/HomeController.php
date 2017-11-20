@@ -33,7 +33,11 @@ class HomeController extends Controller
             if(\Auth::user()->confirmed == 0){
               return   redirect('confirm');
             }else{
-                return 'mission done';
+                if(\Auth::user()->first_time == 1){
+                    return redirect('/profile/create');
+                }else{
+                    return redirect('/profile');
+                }
             }
 
         }

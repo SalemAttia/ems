@@ -43,8 +43,10 @@
     background-color: #444444 !important;
     border-color: #444444 !important;
 }
+
 </style>
-<body class="hold-transition login-page" style="max-height: 400px; background: url(../public/dist/img/background.jpg) 100% 100%;">
+<body class="hold-transition login-page" style="max-height: 400px;  background: url(../public/dist/img/background.jpg) no-repeat;
+    background-size: cover; ">
 <div class="login-box" >
   <div class="login-logo">
     <a href="#"><b>Employee</b>EM</a>

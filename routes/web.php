@@ -15,7 +15,9 @@ Route::get('/home','HomeController@index');
 Route::get('/confirm','HomeController@confirm');
 Route::post('/confirm','HomeController@confirmPost');
 Route::get('/newCode','HomeController@newsms');
-
+Route::resource('profile','CreateUserEmployee');
+Route::get('/accountedit','CreateUserEmployee@editmyaccount');
+Route::get('avatars/{name}', 'CreateUserEmployee@load');
 Auth::routes();
 Route::get('/',function(){
 	return view('home');

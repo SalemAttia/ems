@@ -75,9 +75,9 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-6 col-md-offset-4" style="float: right;">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    تسجيل
                                 </button>
                             </div>
                         </div>

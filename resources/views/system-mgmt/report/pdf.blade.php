@@ -80,7 +80,7 @@
           <br>
           <br>
           <center> <button  id="forprint" onClick="window.print();" class="btn btn-info"> طباعة <i class="fa fa-print"></i></button>
-          <a href="{{url('/system-management/report')}}" id="back"> رجوع </a>
+          <a href="{{url('/admin/system-management/report')}}" id="back"> رجوع </a>
           </center>
 
     </div>

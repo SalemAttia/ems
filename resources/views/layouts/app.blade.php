@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Employee |  @yield('title')</title>
+  <title>Employee System</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -47,8 +47,13 @@
     background-color: #fbf2e1;
     border-color: #d0a177;
 }
+body{
+  font-size: 12px !important;
+  font-weight: 150;
+}
+
 </style>
-<body class="hold-transition login-page" style="max-height: 400px; background: url(../public/dist/img/background.jpg) 100% 100%;">
+<body class="hold-transition login-page" style="max-height: 400px; background: url(../public/dist/img/background.jpg) no-repeat; background-size: cover;">
  
  <!-- Content Wrapper. Contains page content -->
 
@@ -81,8 +86,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">تسجيل الدخول</a></li>
+                            <li><a href="{{ url('/register') }}">حساب جديد</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -15,6 +15,7 @@ use App\socialmeadi;
 use App\education;
 use App\workexprince;
 use Session;
+use App\User;
  
 class CreateUserEmployee extends Controller
 {

@@ -8,11 +8,12 @@ return [
     |
     | If you're using API credentials, change these settings. Get your
     | credentials from https://dashboard.nexmo.com | 'Settings'.
-    |
+    |  fd842a0d
+    |  25a8a23c5819f66b
     */
 
-    'api_key' => 'fd842a0d',
-    'api_secret' => '25a8a23c5819f66b',
+    'api_key' => 'a1f6c13a',
+    'api_secret' => '69bad60f91ac9d13',
 
     /*
     |--------------------------------------------------------------------------

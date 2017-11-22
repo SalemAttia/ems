@@ -58,7 +58,11 @@ class companyController extends Controller
             'work_place' => null
 
             ];
+        if(\Auth::user()->confirmed == 1){
         return view('company/index', ['employees' => $employees,'new' => $new,'searchingVals' => $constraints]);
+      }else{
+         return view('company/notActive', ['new' => $new]);
+      }
     }
 
     /**
@@ -69,9 +73,15 @@ class companyController extends Controller
      */
     public function show($id)
     {
+
         $employee = Employee::with('education','socialmeadi','workexprince')->find($id);
         $new = null;
-        return view('company.show',compact('employee','new'));
+        if(\Auth::user()->confirmed == 1){
+         return view('company.show',compact('employee','new'));
+      }else{
+         return view('company/notActive', ['new' => $new]);
+      }
+       
     }
 
      public function load($name) {
@@ -105,7 +115,12 @@ class companyController extends Controller
         $employees = $this->doSearchingQuery($constraints);
       
         $new = 'بحث';
-        return view('company/index', ['employees' => $employees, 'searchingVals' => $constraints,'new' => $new]);
+        if(\Auth::user()->confirmed == 1){
+         return view('company/index', ['employees' => $employees, 'searchingVals' => $constraints,'new' => $new]);
+      }else{
+         return view('company/notActive', ['new' => $new]);
+      }
+       
     }
 
     private function doSearchingQuery($constraints) {

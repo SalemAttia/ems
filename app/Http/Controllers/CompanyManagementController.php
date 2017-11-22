@@ -63,7 +63,8 @@ class CompanyManagementController extends Controller
             'password' => bcrypt($request['password']),
             'firstname' => $request['firstname'],
             'lastname' => $request['lastname'],
-            'role'  => 2
+            'role'  => 2,
+            'confirmed' => 1
         ]);
 
         return redirect()->intended('/admin/company-management');
@@ -78,6 +79,23 @@ class CompanyManagementController extends Controller
     public function show($id)
     {
         //
+    }
+
+
+    public function disactive($id)
+    {
+        $user = User::find($id);
+        $status = $user->confirmed;
+        if($status == 1){
+            $input['confirmed'] = 0;
+            User::where('id', $id)
+            ->update($input);
+        }else{
+            $input['confirmed'] = 1;
+            User::where('id', $id)
+            ->update($input);
+        }
+        return redirect()->back();
     }
 
     /**

@@ -42,7 +42,7 @@ Route::get('/profile', 'ProfileController@index');
 Route::post('user-management/search', 'UserManagementController@search')->name('user-management.search');
 Route::resource('user-management', 'UserManagementController');
 Route::resource('company-management', 'CompanyManagementController');
-Route::post('company-management/disactive', 'CompanyManagementController@disactive')->name('company-management.disactive');
+Route::get('company-management/disactive/{id}', 'CompanyManagementController@disactive')->name('company-management.disactive');
 
 Route::resource('employee-management', 'EmployeeManagementController');
 Route::post('employee-management/search', 'EmployeeManagementController@search')->name('employee-management.search');

@@ -28,8 +28,7 @@
               <tr role="row">
                 <th  class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">الاسم </th>
                 <th  class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">البريد الالكترونى</th>
-                <th  class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">الاسم الاول</th>
-                <th  class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">الاسم الاخير</th>
+                
                 <th  aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Action</th>
               </tr>
             </thead>
@@ -47,14 +46,20 @@
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{ $user->username }}</td>
                   <td>{{ $user->email }}</td>
-                  <td class="hidden-xs">{{ $user->email }}</td>
-                  
+                 
                   <td>
                     <form class="row" method="POST" action="{{ route('company-management.destroy', ['id' => $user->id]) }}" onsubmit = "return confirm('Are you sure?')">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <a href="{{ route('company-management.edit', ['id' => $user->id]) }}" class="btn btn-warning btn-margin">
                         تعديل
+                        </a>
+                        <a href="{{ route('company-management.disactive', ['id' => $user->id]) }}" class="btn btn-info btn-margin">
+                        @if($user->confirmed == 1)
+                        تعطيل
+                        @else
+                        تفعيل
+                        @endif
                         </a>
                        
                          <button type="submit" class="btn btn-danger">

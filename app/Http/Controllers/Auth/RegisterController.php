@@ -65,15 +65,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $code = $this->generatePIN();
         //$phone = $data['phone'];
-        $phone = $data['phone'];
+        $phone = $data['code'].$data['phone'];
         $sms = $this->sms($code,$phone);
        
            return User::create([
             'username' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
+            'phone' => $phone,
             'code' => $code,
             'password' => bcrypt($data['password']),
         ]); 

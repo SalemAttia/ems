@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+<style type="text/css">
+    input{
+        font-size: 12px !important;
+        font-weight: 200 !important;
+    }
+</style>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -17,9 +23,9 @@
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" dir="rtl" placeholder="الاسم" required autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -31,26 +37,40 @@
                                 <input id="email" type="email" class="form-control" name="email" dir="rtl" placeholder="البريد الالكترونى" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label"></label>
+                            <div class="input-group col-md-6" style="padding-left: 2%;">
+                            <span class="input-group-addon" style="padding: 0 !important;">
+                                <select class="" name="code" style="border: 0; width: 120px;">
+                                @include('partial.countriesphonecode')
+                                
+                            </select>
+                            </span>
+                             <input id="phone" type="number" class="form-control" name="phone" dir="rtl" placeholder="الهاتف (1555565528)" value="{{ old('phone') }}" style="width: 95%;" required>
+                            
+                            </div>
+                        </div>
 
-                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+<!-- 
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="number" class="form-control" name="phone" dir="rtl" placeholder="الهاتف المتنقل" value="{{ old('phone') }}" required>
 
                                 @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('phone') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label"></label>
@@ -59,9 +79,9 @@
                                 <input id="password" type="password" class="form-control" dir="rtl" placeholder="كلمة السر" name="password" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>

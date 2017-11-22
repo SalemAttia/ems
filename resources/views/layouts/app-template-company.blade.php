@@ -30,7 +30,7 @@
 <div class="wrapper">
 
     <!-- Main Header -->
-    @include('layouts.header')
+    @include('layouts.header-company')
     <!-- Sidebar -->
     @include('layouts.sidebar-company')
     @yield('content')

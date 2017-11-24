@@ -53,7 +53,7 @@ class DegreeController extends Controller
             'name' => $request['name']
         ]);
 
-        return redirect()->intended('system-management/degree');
+        return redirect()->intended('/admin/system-management/degree');
     }
 
     /**
@@ -78,7 +78,7 @@ class DegreeController extends Controller
         $degree = degree::find($id);
         // Redirect to degree list if updating degree wasn't existed
         if ($degree == null || count($degree) == 0) {
-            return redirect()->intended('/system-management/degree');
+            return redirect()->intended('/admin/system-management/degree');
         }
 
         return view('system-mgmt/degree/edit', ['degree' => $degree]);
@@ -101,7 +101,7 @@ class DegreeController extends Controller
         degree::where('id', $id)
             ->update($input);
         
-        return redirect()->intended('system-management/degree');
+        return redirect()->intended('/admin/system-management/degree');
     }
 
     /**
@@ -113,7 +113,7 @@ class DegreeController extends Controller
     public function destroy($id)
     {
         degree::where('id', $id)->delete();
-         return redirect()->intended('system-management/degree');
+         return redirect()->intended('/admin/system-management/degree');
     }
 
     /**

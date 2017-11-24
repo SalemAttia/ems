@@ -53,7 +53,7 @@ class socialController extends Controller
             'name' => $request['name']
         ]);
 
-        return redirect()->intended('system-management/social');
+        return redirect()->intended('/admin/system-management/social');
     }
 
     /**
@@ -78,7 +78,7 @@ class socialController extends Controller
         $social = social::find($id);
         // Redirect to social list if updating social wasn't existed
         if ($social == null || count($social) == 0) {
-            return redirect()->intended('/system-management/social');
+            return redirect()->intended('/admin/system-management/social');
         }
 
         return view('system-mgmt/social/edit', ['social' => $social]);
@@ -101,7 +101,7 @@ class socialController extends Controller
         social::where('id', $id)
             ->update($input);
         
-        return redirect()->intended('system-management/social');
+        return redirect()->intended('/admin/system-management/social');
     }
 
     /**
@@ -113,7 +113,7 @@ class socialController extends Controller
     public function destroy($id)
     {
         social::where('id', $id)->delete();
-         return redirect()->intended('system-management/social');
+         return redirect()->intended('/admin/system-management/social');
     }
 
     /**

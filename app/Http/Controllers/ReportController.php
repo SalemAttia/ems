@@ -46,7 +46,7 @@ class ReportController extends Controller
 
     public function exportExcel(Request $request) {
         $this->prepareExportingData($request)->export('xlsx');
-        redirect()->intended('system-management/report');
+        redirect()->intended('/admin/system-management/report');
     }
 
     public function exportPDF(Request $request) {

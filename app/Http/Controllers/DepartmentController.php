@@ -54,7 +54,7 @@ class DepartmentController extends Controller
             'name' => $request['name']
         ]);
 
-        return redirect()->intended('system-management/department');
+        return redirect()->intended('/admin/system-management/department');
     }
 
     /**
@@ -79,7 +79,7 @@ class DepartmentController extends Controller
         $department = Department::find($id);
         // Redirect to department list if updating department wasn't existed
         if ($department == null || count($department) == 0) {
-            return redirect()->intended('/system-management/department');
+            return redirect()->intended('/admin/system-management/department');
         }
 
         return view('system-mgmt/department/edit', ['department' => $department]);
@@ -102,7 +102,7 @@ class DepartmentController extends Controller
         Department::where('id', $id)
             ->update($input);
         
-        return redirect()->intended('system-management/department');
+        return redirect()->intended('/admin/system-management/department');
     }
 
     /**
@@ -114,7 +114,7 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         Department::where('id', $id)->delete();
-         return redirect()->intended('system-management/department');
+         return redirect()->intended('/admin/system-management/department');
     }
 
     /**

@@ -60,7 +60,7 @@ class StateController extends Controller
             'country_id' => $request['country_id']
         ]);
 
-        return redirect()->intended('system-management/state');
+        return redirect()->intended('/admin/system-management/state');
     }
 
     /**
@@ -85,7 +85,7 @@ class StateController extends Controller
         $state = State::find($id);
         // Redirect to state list if updating state wasn't existed
         if ($state == null || count($state) == 0) {
-            return redirect()->intended('/system-management/state');
+            return redirect()->intended('/admin/system-management/state');
         }
 
         $countries = Country::all();
@@ -112,7 +112,7 @@ class StateController extends Controller
         State::where('id', $id)
             ->update($input);
         
-        return redirect()->intended('system-management/state');
+        return redirect()->intended('/admin/system-management/state');
     }
 
     /**
@@ -124,7 +124,7 @@ class StateController extends Controller
     public function destroy($id)
     {
         State::where('id', $id)->delete();
-         return redirect()->intended('system-management/state');
+         return redirect()->intended('/admin/system-management/state');
     }
 
     /**

@@ -51,6 +51,9 @@
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/app.min.js')}}"></script>
+<script src="{{asset('js/vue.js')}}"></script>
+<script src="{{asset('js/vue-resource.js')}}"></script>
+<script src="{{asset('js/myvue.js')}}"></script>
 <!-- any blugins here -->
  @yield('js')
 <script type="text/javascript">

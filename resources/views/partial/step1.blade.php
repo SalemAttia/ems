@@ -1,5 +1,5 @@
 
-        <div class="row setup-content" id="step-1">
+        <div class="row setup-content" id="step-1" >
           <div class="col-xs-12">
             <div class="col-md-12 well" style="background: #fff;">
               <div class="col-sm-8 col-sm-offset-2">
@@ -47,12 +47,12 @@
                                 </div>
                     </div>
                   </div>
-                  <div class="col-sm-6 col-xs-6" style="float: left;">
+                  <div class="col-sm-6 col-xs-6" style="float: right;">
                     <div class="form-group">
                       <label for="nationality">الجنسية<sup class="color-red ">*</sup></label>
                       
                       
-                      <select name="nationality" class="form-control">
+                      <select name="nationality" class="form-control" v-model="nationality" v-on:change="nationalitychange()">
                       <option value="">الجنسية</option>
                       @include('partial.countries')
                       </select>
@@ -60,10 +60,10 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-6 col-xs-6" style="float: right;">
+                  <div class="col-sm-6 col-xs-6" style="float: left;">
                     <div class="form-group">
                       <label for="city_id">خلاصة القيد <button type="button" style="background: #fff;border: 0;" id="pop2" title="" data-content="<b>لمواطني دولة الامارات فقط</b>" data-placement="left" data-toggle="popover" class="fa fa-info-circle" data-original-title="" data-html="true"></button><sup class="color-red ">*</sup></label>
-                      <select name="Summary_of_enrollment" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                      <select name="Summary_of_enrollment" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true" v-bind:disabled="nationality">
                       <option value="">خلاصة القيد</option>
                       @foreach(\App\City::get() as $city)
                         <option value="{{$city->id}}">{{$city->name}}</option>

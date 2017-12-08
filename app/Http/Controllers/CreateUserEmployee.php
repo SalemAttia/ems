@@ -349,7 +349,6 @@ class CreateUserEmployee extends Controller
             'birthdate'  => 'required',
             'phone1'  => 'required',
             'gender'  => 'required',
-            'gender'  => 'required',
 
         ]);
     }

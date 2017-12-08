@@ -35,6 +35,7 @@ Route::group(['prefix' => 'company'],function()
 
 Route::group(['prefix' => 'admin'],function()
 {
+	Route::get('/employee-management/api/division/{id}','HomeController@division');
 Route::get('/', 'DashboardController@index');
 // Route::get('/system-management/{option}', 'SystemMgmtController@index');
 Route::get('/profile', 'ProfileController@index');

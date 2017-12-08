@@ -94,6 +94,7 @@ class EmployeeManagementController extends Controller
         // $emp = Employee::find(11);
         // $this->workexprince($request,$emp);
         // return 'ok';
+        $this->validateInput($request);
 
         $path = $request->file('picture')->store('avatars');
         $cv = $request->file('cv')->store('cvs');
@@ -327,8 +328,13 @@ class EmployeeManagementController extends Controller
         $this->validate($request, [
             'firstname' => 'required|max:60',
             'middlename' => 'required|max:60',
-            'address' => 'required|max:120',
-            'department_id' => 'required',
+            'last_name'  => 'required|max:60',
+            'nationality'  => 'required',
+            'address'  => 'required',
+            'birthdate'  => 'required',
+            'phone1'  => 'required',
+            'gender'  => 'required',
+
         ]);
     }
 

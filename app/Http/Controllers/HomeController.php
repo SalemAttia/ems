@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Nexmo\Laravel\Facade\Nexmo;
 use Nexmo\Client;
 use App\User;
+use App\Division;
 use Validator;
 use Session;
 
@@ -130,5 +131,13 @@ class HomeController extends Controller
                   'from' => '@ems',
                   'text' => 'confirmation code '.$code
                 ]);
+    }
+
+    /*
+     * return division in json
+    */
+    public function division($id)
+    {
+      return Division::where('city_id',$id)->get();
     }
 }

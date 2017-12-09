@@ -98,7 +98,7 @@ class EmployeeManagementController extends Controller
 
         $path = $request->file('picture')->store('avatars');
         $cv = $request->file('cv')->store('cvs');
-        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status'];
+        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status','division_id','city_id'];
         $input = $this->createQueryInput($keys, $request);
         $input['picture'] = $path;
         $input['cv'] = $cv;
@@ -334,7 +334,13 @@ class EmployeeManagementController extends Controller
             'birthdate'  => 'required',
             'phone1'  => 'required',
             'gender'  => 'required',
-
+            'division_id'  => 'required',
+            'city_id'  => 'required',
+            'email'  => 'required',
+            'degree_name[]'  => 'required',
+            'passing_year[]'  => 'required',
+            'cgp[]'  => 'required',
+            'university_name[]'  => 'required',
         ]);
     }
 

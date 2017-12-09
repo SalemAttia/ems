@@ -2,8 +2,8 @@
       <div class="col-xs-12">
         <div class="col-md-12 well text-center">
           <div class="col-md-8  col-sm-offset-2">
-            <h1 class="text-center" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 15px;"> الخطوة الرابعة نبذة مختصرة</h1>
-            <h3 style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 14px;" >نبذة مختصرة</h3><hr class="m-t-0">
+            <h1 class="text-center" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 15px;"> الخطوة الرابعة </h1>
+            <h3 style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 14px;" >تحدث عن نفسك  </h3><hr class="m-t-0">
             <div class="col-sm-12">
               <div class="form-group">
                 

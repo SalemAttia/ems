@@ -4,12 +4,16 @@
               <h1 class="text-center" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px;">الخطوة الثانية</h1>
               <div class="col-sm-8 col-sm-offset-2" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px;">
                 <h3 class="m-t-0" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px;"></h3>
-                معلومات التعليم<hr class="m-t-0">
+                بيانات التعليم والمعرفة<hr class="m-t-0">
                 <div class="row">
                   <div class="col-sm-6 col-xs-12" style="float: right;">
                     <div class="form-group">
-                      <label style="float: right;" for="deg_name">المؤهل العلمي</label>
-                      <select name="degree_name[]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                      <label style="float: right;" for="deg_name">اخر مؤهل علمي حصلت عليه <sup class="color-red ">*</sup> @if ($errors->has('degree_name'))
+                <span class="" style="font-size: 9px; color: red;">
+                 مطلوب
+               </span>
+               @endif</label>
+                      <select name="degree_name[]" class="form-control select2-hidden-accessible" required="" style="width: 98%;<?php if ($errors->has('degree_name')) echo 'border: 1px solid red;';?>">
                       @foreach(\App\degree::get() as $degree)
                         <option value="{{$degree->name}}">{{$degree->name}}</option>
                         @endforeach
@@ -20,20 +24,32 @@
 
                   <div class="col-sm-6 col-xs-12" style="float: left;">
                     <div class="form-group">
-                      <label for="al_phone" style="float: right;">جهة الدراسة</label>
-                      <input type="text" class="form-control" name="university_name[]" id="university" placeholder="جهة الدراسة">
+                      <label for="al_phone" style="float: right;">جهة الدراسة  @if ($errors->has('university_name[]'))
+                <span class="" style="font-size: 9px; color: red;">
+                 مطلوب
+               </span>
+               @endif</label>
+                      <input type="text" class="form-control" name="university_name[]" style="width: 98%;<?php if ($errors->has('university_name[]')) echo 'border: 1px solid red;';?>" id="university" placeholder="جهة الدراسة">
                     </div>
                   </div>
                   
                   <div class="col-sm-6 col-xs-12" style="float: right;">
                     <div class="form-group">
-                      <label for="cgp" style="float: right;">التخصص</label>
-                      <input type="text" class="form-control" name="cgp[]" id="cgp" placeholder="التخصص">
+                      <label for="cgp" style="float: right;">التخصص  @if ($errors->has('cgp[]'))
+                <span class="" style="font-size: 9px; color: red;">
+                 مطلوب
+               </span>
+               @endif</label>
+                      <input type="text" class="form-control" name="cgp[]" id="cgp" style="width: 98%;<?php if ($errors->has('cgp[]')) echo 'border: 1px solid red;';?>" placeholder="التخصص">
                     </div>
                   </div>
                   <div class="col-sm-6 col-xs-12" style="float: left;">
                     <div class="form-group">
-                      <label style="float: right;" for="al_phone">سنة التخرج</label>
+                      <label style="float: right;" for="al_phone">سنة التخرج @if ($errors->has('passing_year[]'))
+                <span class="" style="font-size: 9px; color: red;">
+                 مطلوب
+               </span>
+               @endif</label>
                       @include('partial.year')
                     </div>
 

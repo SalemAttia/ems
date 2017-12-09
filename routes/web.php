@@ -79,3 +79,11 @@ Route::resource('system-management/degree', 'DegreeController');
 Route::resource('system-management/position', 'PositionController');
 Route::resource('system-management/social', 'socialController');
 });
+
+/*
+* langauge swicher
+*/
+Route::post('/langauge', array(
+    'Middleware' => 'langaugeSwitcher',
+    'uses' => 'LangaugeController@langauge',
+    'as'   => 'langaugea'));

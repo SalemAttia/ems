@@ -86,8 +86,8 @@ body{
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">تسجيل الدخول</a></li>
-                            <li><a href="{{ url('/register') }}">حساب جديد</a></li>
+                            <li><a href="{{ url('/login') }}">{{trans('demo.login')}}</a></li>
+                            <li><a href="{{ url('/register') }}">{{trans('demo.register')}}</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -109,6 +109,15 @@ body{
                                 </ul>
                             </li>
                         @endif
+                        <li> <form action="{{route('langaugea')}}" method="post">
+                         {{csrf_field()}}
+                             <select style="color: #777;background: rgba(204, 204, 204, 0);border: 0;margin-top: 11px;" name="langauge" id="formid">
+                              <option value="ar" >عربى</option>
+                              <option value="en" <?php if ( Session('locale') == 'en') echo "selected";?> >English</option>
+                              
+                        </select>
+                        
+                        </form></li>
                     </ul>
                 </div>
             </div>
@@ -121,12 +130,43 @@ body{
 </div>
 
  
-
 <!-- jQuery 2.2.3 -->
 <script src="{{asset('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- iCheck -->
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#formid').change(function(){
+     var locale = $(this).val();
+
+     var _token =$("input[name=_token]").val();
+       
+            $.ajax({
+                url: 'langauge',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'locale':locale,
+                    '_token':_token
+                },
+                    success:function(data){
+
+                    },
+                    error:function(data){
+                    
+                    },
+                    beforSend:function(data){
+                    
+                    },
+                    complete:function(data){
+                    window.location.reload(true);
+                    }
+                });
+
+    });
+});
+</script>
 <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
 <script>
   $(function () {

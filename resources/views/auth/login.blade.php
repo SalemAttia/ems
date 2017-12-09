@@ -53,12 +53,12 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body" style="padding: 40px;">
-    <p class="login-box-msg">تسجيل الدخول</p>
+    <p class="login-box-msg">{{trans('demo.login')}}</p>
    
      @if ($errors->has('password'))
    <center>
     <span class="help-block">
-        <strong>كلمة السر غير صحيحة</strong>
+        <strong>{{trans('demo.anerror')}}</strong>
     </span>   
    </center>
               
@@ -66,7 +66,7 @@
     @if ($errors->has('email'))
               <center>
                   <span class="help-block">
-                <p>الايمايل | كلمة السر غير صحيح</p>
+                <p>{{trans('demo.anerror')}}</p>
               </span>
               </center>
     @endif
@@ -76,24 +76,24 @@
                         {{ csrf_field() }}
 
       <div class="form-group has-feedback">
-        <input style="font-size: 11px;" type="email" name="email" dir="rtl" class="form-control" placeholder="البريد الالكترونى">
+        <input style="font-size: 11px;" type="email" name="email"  class="form-control" <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?> placeholder="{{trans('demo.email')}}" value="{{ old('email') }}" >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input style="font-size: 11px;" name="password" type="password" dir="rtl" class="form-control" placeholder="كلمة المرور">
+        <input style="font-size: 11px;" name="password" type="password"  class="form-control"  <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?> placeholder="{{trans('demo.password')}} " >
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-6">
           <div class="checkbox icheck">
             <label style="font-size: 11px;">
-              <input type="checkbox" > تذكرنى
+              <input type="checkbox" > {{trans('demo.remember')}}
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
-          <button style="font-size: 10px;" type="submit" class="btn btn-primary btn-block btn-flat">تسجيل الدخول</button>
+          <button style="font-size: 10px;" type="submit" class="btn btn-primary btn-block btn-flat">{{trans('demo.login')}}</button>
         </div>
         <!-- /.col -->
       </div>

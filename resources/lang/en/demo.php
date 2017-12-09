@@ -13,4 +13,8 @@ return [
     'anerror' => 'email | password is not correct',
     'remember' => 'remember',
     'slogin' => 'hello on ems you can register and use our site by follow steps below',
+    'msconfirme' => 'enter code you recive on your phone',
+    'confirmCode' => 'confirm code',
+    'resend' => 'resend confirmation code',
+    'conf' => 'confirm',
 ];

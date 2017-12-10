@@ -11,11 +11,7 @@
       <!-- Your Page Content Here -->
       <div class="row form-group">
         <div class="col-xs-12">
-         @if ( Session('locale') == 'en')
-          @include('partial.en.ul')
-         @else
-          @include('partial.ar.ul')
-         @endif
+          @include('user-employee.partial.ar.ul')
         </div>
       </div>
 

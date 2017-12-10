@@ -13,7 +13,7 @@
                  مطلوب
                </span>
                @endif</label>
-                      <select name="degree_name[]" class="form-control select2-hidden-accessible" required="" style="width: 98%;<?php if ($errors->has('degree_name')) echo 'border: 1px solid red;';?>">
+                      <select name="degree_name[]" class="form-control" required="" style="width: 98%;<?php if ($errors->has('degree_name')) echo 'border: 1px solid red;';?>">
                       @foreach(\App\degree::get() as $degree)
                         <option value="{{$degree->name}}">{{$degree->name}}</option>
                         @endforeach
@@ -68,6 +68,9 @@
                       <tr id='addr1'></tr>
                     </tbody>
                   </table>
+                  <!-- talanted and langauge -->
+                  @include('partial.talantedLangaugeTraining')
+                  <!-- ./talanted and langauge -->
 
                 </div>
 

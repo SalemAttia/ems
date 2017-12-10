@@ -23,7 +23,7 @@
             </a></li>
             <li class="disabled"><a href="#step-4" style="border-left: 1px solid #b39c6a;">
               <h4 class="list-group-item-heading">الخطوة الرابعة</h4>
-              <p class="list-group-item-text">تحدث عن نفسك </p>
+              <p class="list-group-item-text">تحدث عن نفسك  </p>
             </a></li>
             <li class="disabled"><a href="#step-5">
               <h4 class="list-group-item-heading">الخطوة الخامسة</h4>

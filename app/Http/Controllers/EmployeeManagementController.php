@@ -14,6 +14,7 @@ use App\Division;
 use App\socialmeadi;
 use App\education;
 use App\workexprince;
+use App\training_activity;
 use Session;
  
 class EmployeeManagementController extends Controller
@@ -94,14 +95,17 @@ class EmployeeManagementController extends Controller
         // $emp = Employee::find(11);
         // $this->workexprince($request,$emp);
         // return 'ok';
+
         $this->validateInput($request);
 
         $path = $request->file('picture')->store('avatars');
-        $cv = $request->file('cv')->store('cvs');
+        // $cv = $request->file('cv')->store('cvs');
         $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status','division_id','city_id'];
         $input = $this->createQueryInput($keys, $request);
         $input['picture'] = $path;
-        $input['cv'] = $cv;
+        $input['langauges'] = serialize($request->langauges);
+        
+        // $input['cv'] = $cv;
         // Not implement yet
         $input['company_id'] = 0;
         $emp = Employee::create($input);
@@ -115,6 +119,10 @@ class EmployeeManagementController extends Controller
 
             //socialmedia
             $this->soicalmedia($request,$emp);
+
+            // training_activity
+            $this->training_activity($request,$emp); 
+
 
           
 
@@ -334,13 +342,12 @@ class EmployeeManagementController extends Controller
             'birthdate'  => 'required',
             'phone1'  => 'required',
             'gender'  => 'required',
-            'division_id'  => 'required',
             'city_id'  => 'required',
             'email'  => 'required',
-            'degree_name[]'  => 'required',
-            'passing_year[]'  => 'required',
-            'cgp[]'  => 'required',
-            'university_name[]'  => 'required',
+            'degree_name'  => 'required',
+            'passing_year'  => 'required',
+            'cgp'  => 'required',
+            'university_name'  => 'required',
         ]);
     }
 
@@ -439,5 +446,33 @@ class EmployeeManagementController extends Controller
                
             }
             return true;
+    }
+
+    private function training_activity($request,$emp)
+    {
+           $to = count($request->traninigname);
+           if($to > 0){
+            $traninigname = array();
+            $destination = array();
+            $dateoftraninig = array();
+            
+            $traninigname = $request->traninigname;
+            $destination = $request->destination;
+            $dateoftraninig = $request->dateoftraninig;
+            
+            for ($i=0; $i < $to; $i++) { 
+               $trainig = new training_activity();
+               $trainig->traninigname = $traninigname[$i];
+               $trainig->destination = $destination[$i];
+               $trainig->dateoftraninig = $dateoftraninig[$i];
+               $trainig->employee_id = $emp->id;
+               $save = $trainig->save();
+               if(!$save){
+                 return 'error';
+               }
+               
+            }
+            return true;
+        }
     }
 }

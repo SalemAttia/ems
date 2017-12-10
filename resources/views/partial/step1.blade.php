@@ -85,7 +85,7 @@
           <div class="col-sm-6 col-xs-6" style="float: left;">
             <div class="form-group">
               <label for="city_id">خلاصة القيد <button type="button" style="background: #fff;border: 0;" id="pop2" title="" data-content="<b>لمواطني دولة الامارات فقط</b>" data-placement="left" data-toggle="popover" class="fa fa-info-circle" data-original-title="" data-html="true"></button><sup class="color-red ">*</sup></label>
-              <select name="Summary_of_enrollment" v-bind:disabled="nationality" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+              <select name="Summary_of_enrollment" v-bind:disabled="nationality" class="form-control">
                 <option value="">خلاصة القيد</option>
                 @foreach(\App\City::get() as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -148,7 +148,7 @@
             <div class="form-group">
               <label for="city_id">المنطقة<sup class="color-red ">*</sup> @if ($errors->has('division_id'))
                 <span class="" style="font-size: 9px; color: red;">مطلوب</span>@endif</label>
-              <select name="division_id" v-bind:disabled="discity_id" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true" style="<?php if ($errors->has('division_id')) echo 'border: 1px solid red;';?>">
+              <select name="division_id" v-bind:disabled="discity_id" class="form-control" style="<?php if ($errors->has('division_id')) echo 'border: 1px solid red;';?>">
                 <option  v-for="divi in division" value="@{{divi.id}}"> @{{divi.name}}</option>
               
               </select>

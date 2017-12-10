@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Droid Arabic Kufi';
+    src: url('../fonts/DroidArabicKufi.eot');
+    src: url('../fonts/DroidArabicKufi.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/DroidArabicKufi.woff2') format('woff2'),
+    url('../fonts/DroidArabicKufi.woff') format('woff'),
+    url('../fonts/DroidArabicKufi.ttf') format('truetype'),
+    url('../fonts/DroidArabicKufi.svg#DroidArabicKufi') format('svg'),
+    url('../fonts/DroidKufi-Bold.arabic');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif;
+   
+}
+.sidebar-menu a span{
+	font-weight: bold;
+}
+.skin-blue .treeview-menu>li>a:hover {
+    color: #b39c6a !important;
+}
+.treeview-menu a{
+	font-weight: bold;
+}
+.skin-blue .main-header .navbar {
+    background-color: #b39c6a !important;
+     /*#e2dac5*/
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: #a18c5f !important;
+}
+.skin-blue .main-header .logo {
+    background-color: #a18c5f !important;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+.skin-blue .main-header li.user-header {
+    background-color: #b39c6a !important;
+}
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a {
+    color: #fff;
+    background: #b39c6a !important;
+    border-left-color: #a18c5f !important;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #e2dac5 !important;
+}
+.skin-blue .sidebar a {
+    color: #fff !important;
+}
+.skin-blue .sidebar-menu>li.header {
+    color: #4b646f ;
+    background: #ecf0f5 !important;
+}
+.skin-blue .sidebar-menu>li>.treeview-menu {
+    margin: 0 1px;
+    background: #e2dac5 !important;
+}
+.info-box-text {
+    font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #b39c6a;
+}
+.info-box-number {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    color: #b39c6a !important;
+}
+.skin-blue .sidebar-menu>li>a {
+    border-left: 3px solid transparent !important;
+    border-right: none !important;
+}
+menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a {
+    color: #fff;
+    background: #b39c6a !important;
+    border-right-color: #a18c5f !important;
+}

@@ -6,7 +6,7 @@
 @section('action-content')
     <!-- Your Page Content Here -->
       <div class="row">
-       <div id="manprcontent" class="col-md-4 col-sm-12 col-xs-12" style="float: right;">
+       <div id="manprcontent" class="col-md-4 col-sm-12 col-xs-12" style="<?php if ( Session('locale') == 'en') echo 'float: left;'; else echo 'float: right';?>">
 
         <!-- Profile Image -->
         <div class="box box-primary">
@@ -15,27 +15,27 @@
 
             <h3 class="profile-username text-center">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</h3>
 
-            <p class="text-muted text-center">{{$employee->jobtitle}}</p>
+            <p class="text-muted text-center">{{$employee->workexprince[0]->duties}}</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-flag"></i> الجنسية </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->nationality}}</a>
+                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-flag"></i> {{trans('demo.nationality')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->nationality}}</a>
               </li>
               @if($employee->Summary_of_enrollment)
               <li class="list-group-item">
-                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-user"></i> خلاصة القيد </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->Summary_of_enrollment}}</a>
+                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-user"></i>{{trans('demo.Summary_of_enrollment')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->Summary_of_enrollment}}</a>
               </li>
               @endif
               <li class="list-group-item">
-                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-users"></i> الحالة الاجتماعية </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->social_status}}</a>
+                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-users"></i> {{trans('demo.social_status')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->social_status}}</a>
               </li>
               
 
               <li class="list-group-item">
-                <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-phone"></i> رقم الجوال </b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->phone1}}</a>
+                <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-phone"></i> {{trans('demo.phone1')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->phone1}}</a>
               </li>
               <li class="list-group-item">
-                <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-inbox"></i>الايميل</b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->email}}</a>
+                <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-inbox"></i>{{trans('demo.email')}}</b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->email}}</a>
               </li>
               <li class="list-group-item">
               <style type="text/css">
@@ -91,13 +91,13 @@
         <!-- About Me Box -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">عن الموظف</h3>
+            <h3 class="box-title">{{trans('demo.aboutemployee')}}</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
             
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> العنوان</strong>
+            <strong><i class="fa fa-map-marker margin-r-5"></i> {{trans('demo.address')}}</strong>
 
             <p class="text-muted">{{$employee->address}}</p>
 
@@ -115,19 +115,19 @@
  -->
             <hr>
 
-            <strong><i class="fa fa-file-text-o margin-r-5"></i>ملاحظات</strong>
+            <!-- <strong><i class="fa fa-file-text-o margin-r-5"></i>ملاحظات</strong>
 
-            <p>{!!$employee->shortdesc!!}</p>
+            <p>{!!$employee->shortdesc!!}</p> -->
           </div>
           <!-- /.box-body -->
         </div>
         <!-- /.box -->
       </div>
       <!-- /.col -->
-      <div class="col-md-8 col-sm-12 col-xs-12" style="float: left;">
+      <div class="col-md-8 col-sm-12 col-xs-12" style="<?php if ( Session('locale') == 'en') echo 'float: right;'; else echo 'float: left';?>">
         <div class="nav-tabs-custom">
          <ul class="nav nav-tabs">
-          <li style="float: right;"><a href="#timeline"  data-toggle="tab">عن الموظف</a></li>
+          <li style="<?php if ( Session('locale') == 'en') echo 'float: left;'; else echo 'float: right';?>" class="active"><a href="#timeline"  data-toggle="tab">{{trans('demo.aboutemployee')}}</a></li>
         </ul>
         <div class="tab-content">
           <div class="active tab-pane" id="timeline">
@@ -144,7 +144,7 @@
 
                 <div class="timeline-item">
                   
-                  <h3 class="timeline-header"><a href="#">معلومات شخصية</a></h3>
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.personalinfo')}}</a></h3>
 
                   <div class="timeline-body">
                   <style type="text/css">
@@ -154,26 +154,26 @@
                   </style>
                   <ul class="list-group list-group-unbordered ab">
                   <li class="list-group-item">
-                      <b><i class="fa fa-user"></i> الاسم كامل </b> <a class="pull-left">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</a>
+                      <b><i class="fa fa-user"></i> {{trans('demo.fullname')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</a>
                     </li>
                     <li class="list-group-item">
-                      <b><i class="fa fa-globe"></i> الجنسية </b> <a class="pull-left">{{$employee->nationality}}</a>
+                      <b><i class="fa fa-globe"></i> {{trans('demo.nationality')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->nationality}}</a>
                     </li>
                     <li class="list-group-item">
-                      <b><i class="fa fa-phone"></i> الهاتف المتحرك 1 </b> <a class="pull-left">{{$employee->phone1}}</a>
+                      <b><i class="fa fa-phone"></i> {{trans('demo.phone1')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->phone1}}</a>
                     </li>
                     @if($employee->phone2)
                     <li class="list-group-item">
-                      <b><i class="fa fa-phone"></i> الهاتف المتحرك 2 </b> <a class="pull-left">{{$employee->phone2}}</a>
+                      <b><i class="fa fa-phone"></i> {{trans('demo.phone1')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->phone2}}</a>
                     </li>
                     @endif
                     
                     <li class="list-group-item">
-                      <b><i class="fa fa-inbox"></i>العنوان الرئيسى</b> <a class="pull-left">{{$employee->address}}</a>
+                      <b><i class="fa fa-inbox"></i>{{trans('demo.address')}}</b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->address}}</a>
                     </li>
                     @if($employee->address2)
                     <li class="list-group-item">
-                      <b><i class="fa fa-inbox"></i>العنوان المؤقت</b> <a class="pull-left">{{$employee->address2}}</a>
+                      <b><i class="fa fa-inbox"></i>{{trans('demo.address2')}}</b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$employee->address2}}</a>
                     </li>
                     @endif
 
@@ -191,17 +191,17 @@
                 <div class="timeline-item">
                  
 
-                  <h3 class="timeline-header"><a href="#"></a>التعليم</h3>
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.education')}}</a></h3>
 
                   <div class="timeline-body" dir="rtl">
-                    <table class="table table-condensed" dir="rtl">
+                    <table class="table table-condensed" <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?>>
                       <tbody>
                       <tr style="text-align: center;">
                         <th style="width: 10px">#</th>
-                        <th style="font-size: 12px; text-align: center; font-weight: 200;">المؤهل العلمي</th>
-                        <th style="font-size: 12px; text-align: center; font-weight: 200;">جهة الدراسة</th>
-                        <th style="font-size: 12px; text-align: center; font-weight: 200;">التخصص</th>
-                        <th style="font-size: 12px; text-align: center; font-weight: 200;">سنة التخرج</th>
+                        <th style="font-size: 12px; text-align: center; font-weight: 200;">{{trans('demo.scien')}}</th>
+                        <th style="font-size: 12px; text-align: center; font-weight: 200;">{{trans('demo.dist')}}</th>
+                        <th style="font-size: 12px; text-align: center; font-weight: 200;">{{trans('demo.spc')}}</th>
+                        <th style="font-size: 12px; text-align: center; font-weight: 200;">{{trans('demo.yearof')}}</th>
                       </tr>
                       <?php $i = 1;?>
                       @foreach(\App\education::where('employee_id' ,'=',$employee->id)->get() as $valu) 
@@ -236,7 +236,7 @@
                 <div class="timeline-item">
                   
 
-                  <h3 class="timeline-header"><a href="#"></a>خبرات العمل السابقة</h3>
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.workexp')}}</a></h3>
 
                   <div class="timeline-body">
                          <table class="table table-condensed">
@@ -244,12 +244,12 @@
                       <tr style="text-align: center;">
                         <th style="width: 10px">#</th>
                         
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">الحالة العملية</th>
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">جهة العمل الحالية</th>
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">الفئة الوظيفية</th>
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">المسمى الوظيفى</th>
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">مكان العمل</th>
-                        <th style="font-size: 10px; text-align: center; font-weight: 150;">سنوات الخبرة</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.work_practical_situation')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.employer')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.job_category')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.job_title')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.work_place')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.year_of_experience')}}</th>
                       </tr>
                       
                        <?php $i = 1;?>
@@ -279,7 +279,7 @@
                 <div class="timeline-item">
                   
 
-                  <h3 class="timeline-header"><a href="#"></a>نبذة مختصرة</h3>
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.aboutemployee')}}</a></h3>
 
                   <div class="timeline-body">
                     <p style="font-size: 12px;">
@@ -296,7 +296,7 @@
                 <div class="timeline-item">
                   
 
-                  <h3 class="timeline-header"><a href="#"></a>التواصل</h3>
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.socialmedia')}}</a></h3>
 
                   <div class="timeline-body">
                      <ul class="list-group list-group-unbordered ab">
@@ -331,7 +331,7 @@
                     </a>
                     @endif
                     </b>
-                    </a> <a class="pull-left">{{$valu->soclink}}</a>
+                    </a> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>">{{$valu->soclink}}</a>
                     </li>
                   @endforeach
                     
@@ -350,7 +350,7 @@
   </div> 
   <!-- ./Your Page Content Here -->
 
-<center> <button  id="forprint" onClick="window.print();" class="btn btn-info"> طباعة <i class="fa fa-print"></i></button></center>
+<center> <button  id="forprint" onClick="window.print();" class="btn btn-info"> {{trans('demo.print')}} <i class="fa fa-print"></i></button></center>
 </section>
 <!-- /.content -->
 @endsection

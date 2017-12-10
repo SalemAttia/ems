@@ -24,4 +24,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function pictuer()
+    {
+        $employee = Employee::select('picture')->where('user_id',$this->id)->first();
+
+        return $employee->picture;
+    }
+
+    
 }

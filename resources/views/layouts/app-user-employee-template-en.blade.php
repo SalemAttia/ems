@@ -14,14 +14,8 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  @if ( Session('locale') == 'en')
   <link rel="stylesheet" href="{{asset('dist/css/en/AdminLTE.min.css')}}">
   <link rel="stylesheet" href="{{asset('dist/css/en/mystyle.css')}}">
-  @else
-
-  <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
-  <link rel="stylesheet" href="{{asset('dist/css/mystyle.css')}}">
-  @endif
   @yield('css')
   
   <link rel="stylesheet" href="{{asset('dist/css/skins/skin-blue.min.css')}}">
@@ -32,11 +26,11 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini"  <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?>>
+<body class="hold-transition skin-blue sidebar-mini" dir="rtl">
 <div class="wrapper">
 
     <!-- Main Header -->
-    @include('layouts.headeruser')
+    @include('layouts.header-user')
     <!-- Sidebar -->
     @include('layouts.sidebaruseremployee')
     @yield('content')
@@ -56,38 +50,6 @@
 
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script type="text/javascript">
-    $(document).ready(function(){
-    $('#formid').change(function(){
-     var locale = $(this).val();
-
-     var _token =$("input[name=_token]").val();
-       
-            $.ajax({
-                url: 'langauge',
-                type: 'post',
-                dataType: 'json',
-                data: {
-                    'locale':locale,
-                    '_token':_token
-                },
-                    success:function(data){
-
-                    },
-                    error:function(data){
-                    
-                    },
-                    beforSend:function(data){
-                    
-                    },
-                    complete:function(data){
-                    window.location.reload(true);
-                    }
-                });
-
-    });
-});
-</script>
 <script src="{{asset('dist/js/app.min.js')}}"></script>
 <!-- any blugins here -->
  @yield('js')

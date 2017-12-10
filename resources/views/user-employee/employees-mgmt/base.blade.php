@@ -3,22 +3,26 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('dist/css/emlist.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('dist/css/newemployee.css')}}">
+@if ( Session('locale') == 'en')
+
+@else
 <link rel="stylesheet" href="{{asset('dist/css/timeline.css')}}">
+@endif
 @endsection
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" dir="rtl">
+  <div class="content-wrapper" <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?>>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 style="float: left;">
+      <h1 style="<?php if ( Session('locale') == 'en') echo 'float: right;'; else echo 'float: left';?>">
 
 
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{url('/profile')}}"><i class="fa fa-dashboard"></i>الصفحة الرئيسية</a></li>
-        <li>حساب شخصى</li>
+        <li><a href="{{url('/profile')}}"><i class="fa fa-dashboard"></i>{{trans('demo.profile')}}</a></li>
+        <li>{{trans('demo.managehomepage')}}</li>
        
       </ol>
     </section>

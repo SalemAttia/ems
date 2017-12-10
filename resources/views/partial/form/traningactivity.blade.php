@@ -2,19 +2,19 @@
 	<div class="col-sm-4 col-xs-12" style="float: right;">
 		<div class="form-group">
 			<label for="firstname">اسم الدورة التدريبية</label>
-			<input dir="rtl" type="text" style="width: 98%;" value="" class="form-control"  name="traninigname[]" placeholder="اسم الدورة التدريبية">
+			<input dir="rtl" type="text" style="width: 98%;" class="form-control"  name="traninigname[]" placeholder="اسم الدورة التدريبية" value="">
 		</div>
 	</div>
 	<div class="col-sm-4 col-xs-12" style="float: right;">
 		<div class="form-group">
 			<label for="firstname">جهة التدريب</label>
-			<input dir="rtl" type="text" style="width: 98%;" value="" class="form-control"  name="destination[]" placeholder="جهة التدريب">
+			<input dir="rtl" type="text" style="width: 98%;" class="form-control"  name="destination[]" placeholder="جهة التدريب" value="">
 		</div>
 	</div>
 	<div class="col-sm-4 col-xs-12" style="float: right;">
 		<div class="form-group">
 			<label for="firstname">تاريخ الالتحاق</label>
-			<input dir="rtl" type="date" style="width: 98%;" value="" class="form-control"  name="dateoftraninig[]" placeholder="تاريخ الالتحاق">
+			<input dir="rtl" type="date" style="width: 98%;" class="form-control"  name="dateoftraninig[]" placeholder="تاريخ الالتحاق" value="">
 		</div>
 	</div>
 	<br>

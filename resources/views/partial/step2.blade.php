@@ -24,23 +24,23 @@
 
                   <div class="col-sm-6 col-xs-12" style="float: left;">
                     <div class="form-group">
-                      <label for="al_phone" style="float: right;">جهة الدراسة  @if ($errors->has('university_name[]'))
+                      <label for="al_phone" style="float: right;">جهة الدراسة  @if ($errors->has('university_name[0]'))
                 <span class="" style="font-size: 9px; color: red;">
                  مطلوب
                </span>
                @endif</label>
-                      <input type="text" class="form-control" name="university_name[]" style="width: 98%;<?php if ($errors->has('university_name[]')) echo 'border: 1px solid red;';?>" id="university" placeholder="جهة الدراسة">
+                      <input type="text" class="form-control" name="university_name[]" value="" style="width: 98%;<?php if ($errors->has('university_name[0]')) echo 'border: 1px solid red;';?>" id="university" placeholder="جهة الدراسة" required>
                     </div>
                   </div>
                   
                   <div class="col-sm-6 col-xs-12" style="float: right;">
                     <div class="form-group">
-                      <label for="cgp" style="float: right;">التخصص  @if ($errors->has('cgp[]'))
+                      <label for="cgp" style="float: right;">التخصص  @if ($errors->has('cgp[0]'))
                 <span class="" style="font-size: 9px; color: red;">
                  مطلوب
                </span>
                @endif</label>
-                      <input type="text" class="form-control" name="cgp[]" id="cgp" style="width: 98%;<?php if ($errors->has('cgp[]')) echo 'border: 1px solid red;';?>" placeholder="التخصص">
+                      <input type="text" class="form-control" name="cgp[]" id="cgp" value=""style="width: 98%;<?php if ($errors->has('cgp[0]')) echo 'border: 1px solid red;';?>" placeholder="التخصص" required>
                     </div>
                   </div>
                   <div class="col-sm-6 col-xs-12" style="float: left;">

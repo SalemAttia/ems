@@ -113,7 +113,7 @@
                 <label for="email">الايميل <sup class="color-red "></sup>@if ($errors->has('email'))
               <span class="" style="font-size: 9px; color: red;">مطلوب</span>
               @endif</label>
-                <input type="email" dir="rtl" class="form-control" value="" name="email" style="<?php if ($errors->has('email')) echo 'border: 1px solid red;';?> width: 99%;" id="email" placeholder="الايميل">
+                <input type="email" dir="rtl" class="form-control" value="{{old('email')}}" name="email" style="<?php if ($errors->has('email')) echo 'border: 1px solid red;';?> width: 99%;" id="email" placeholder="الايميل">
               </div>
             </div>
             <div class="col-sm-6 col-xs-6" style="float: right;">
@@ -121,7 +121,7 @@
               <label for="phone">الهاتف المتحرك<sup class="color-red ">*</sup> @if ($errors->has('phone1'))
                 <span class="" style="font-size: 9px; color: red;">مطلوب</span>
                 @endif</label>
-                <input type="number"  style="<?php if ($errors->has('phone1')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control" id="phone" name="phone1" placeholder="الهاتف المتحرك" value="" dir="rtl">
+                <input type="number"  style="<?php if ($errors->has('phone1')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control" id="phone" name="phone1" placeholder="الهاتف المتحرك" value="{{old('phone1')}}" dir="rtl">
               </div>
             </div>
             <div class="col-sm-6 col-xs-6" style="float: left;">

@@ -44,7 +44,7 @@ class EmployeeManagementController extends Controller
         ->leftJoin('country', 'employees.country_id', '=', 'country.id')
         ->leftJoin('division', 'employees.division_id', '=', 'division.id')
         ->select('employees.*', 'department.name as department_name', 'department.id as department_id', 'division.name as division_name', 'division.id as division_id')
-        ->paginate(10);
+        ->paginate(12);
        $new = null;
        $constraints = [
             'jobtitle' => null,
@@ -87,22 +87,22 @@ class EmployeeManagementController extends Controller
      */
     public function store(Request $request)
     {
-
-
-     
+       
         //$this->validateInput($request);
         // Upload image
         // $emp = Employee::find(11);
         // $this->workexprince($request,$emp);
         // return 'ok';
-
+       
         $this->validateInput($request);
-
-        $path = $request->file('picture')->store('avatars');
         // $cv = $request->file('cv')->store('cvs');
         $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status','division_id','city_id'];
         $input = $this->createQueryInput($keys, $request);
-        $input['picture'] = $path;
+        if($request->file('picture')){
+             $path = $request->file('picture')->store('avatars');
+             $input['picture'] = $path;
+         }
+        
         $input['langauges'] = serialize($request->langauges);
         
         // $input['cv'] = $cv;
@@ -116,21 +116,16 @@ class EmployeeManagementController extends Controller
             $this->education($request,$emp);
             // work experances
             $this->workexprince($request,$emp);
-
             //socialmedia
             $this->soicalmedia($request,$emp);
-
             // training_activity
-            $this->training_activity($request,$emp); 
-
-
-          
+            $this->training_activity($request,$emp);  
 
         }//end
         Session::flash('messagea' , 'تم اضافة موظف');
         Session::flash('m-classa' , 'alert-success');
 
-        return redirect()->intended('/employee-management');
+        return redirect()->intended('/admin/employee-management');
     }
 
     /**
@@ -157,7 +152,7 @@ class EmployeeManagementController extends Controller
         $employee = Employee::find($id);
         // Redirect to state list if updating state wasn't existed
         if ($employee == null || count($employee) == 0) {
-            return redirect()->intended('/employee-management');
+            return redirect()->intended('/admin/employee-management');
         }
         $cities = City::all();
         $states = State::all();
@@ -303,9 +298,9 @@ class EmployeeManagementController extends Controller
                 }
             
         }
-        return $query->paginate(10); 
+        return $query->paginate(12); 
       }else{
-        return $query->paginate(10);
+        return $query->paginate(12);
     }
        
        
@@ -344,10 +339,6 @@ class EmployeeManagementController extends Controller
             'gender'  => 'required',
             'city_id'  => 'required',
             'email'  => 'required',
-            'degree_name'  => 'required',
-            'passing_year'  => 'required',
-            'cgp'  => 'required',
-            'university_name'  => 'required',
         ]);
     }
 
@@ -363,7 +354,8 @@ class EmployeeManagementController extends Controller
 
     private function education($request,$emp)
     {
-        $to = count($request->university_name);
+        if(count(array_filter($request->university_name, 'strlen')) > 0){
+        $to = count(array_filter($request->university_name, 'strlen'));
            
             $degree_name = array();
             $university_name = array();
@@ -388,11 +380,13 @@ class EmployeeManagementController extends Controller
               
             }
             return true;
+        }
+        return true;
     }
 
     private function workexprince($request,$emp){
-
-           $to = count($request->company_name);
+            if(count(array_filter($request->company_name, 'strlen')) > 0){
+           $to = count(array_filter($request->company_name, 'strlen'));
             
             $company_name = array();
             $working_period = array();
@@ -422,10 +416,13 @@ class EmployeeManagementController extends Controller
                }
             }
             return true;
+        }
+        return true;
     }
 
     private function soicalmedia($request,$emp){
-           $to = count($request->soicalmedia);
+           if(count(array_filter($request->soclink, 'strlen')) > 0){
+           $to = count(array_filter($request->soclink, 'strlen'));
            
             $socila = array();
             $working_period = array();
@@ -435,7 +432,7 @@ class EmployeeManagementController extends Controller
             $soclink = $request->soclink;
             
             for ($i=0; $i < $to; $i++) { 
-                 $socialmeadi = new socialmeadi();
+               $socialmeadi = new socialmeadi();
                $socialmeadi->soicalmedia = $socila[$i];
                $socialmeadi->soclink = $soclink[$i];
                $socialmeadi->employee_id = $emp->id;
@@ -446,12 +443,17 @@ class EmployeeManagementController extends Controller
                
             }
             return true;
+        }
+        return true;
     }
 
     private function training_activity($request,$emp)
     {
-           $to = count($request->traninigname);
-           if($to > 0){
+
+        if(count(array_filter($request->traninigname, 'strlen')) > 0){
+           
+           $to = count(array_filter($request->traninigname, 'strlen'));
+           
             $traninigname = array();
             $destination = array();
             $dateoftraninig = array();
@@ -472,7 +474,10 @@ class EmployeeManagementController extends Controller
                }
                
             }
-            return true;
+            return true; 
         }
+        else{
+           return true;
+        }  
     }
 }

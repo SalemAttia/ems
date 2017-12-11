@@ -17,7 +17,11 @@
 
       <div>
        @if ( Session('locale') == 'en')
-       english
+        @include('user-employee.partial.en.step1')
+         @include('user-employee.partial.en.step2')
+         @include('user-employee.partial.en.step3')
+         @include('user-employee.partial.en.step4')
+         @include('user-employee.partial.en.step5')
        @else
          @include('user-employee.partial.step1')
          @include('user-employee.partial.step2')

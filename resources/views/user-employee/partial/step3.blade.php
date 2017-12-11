@@ -9,7 +9,7 @@
                <div class="col-sm-6 col-xs-6"  style="float: right;">
                   <div class="form-group">
                     <label for="c_name" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px; float: right;">الحالة العملية</label>
-                       <select name="work_type[]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                       <select name="work_type[]" class="form-control">
                       <option value="">الحالة العملية</option>
                       @foreach(\App\Department::get() as $dep)
                         <option value="{{$dep->name}}">{{$dep->name}}</option>
@@ -33,7 +33,7 @@
                 <div class="col-sm-6 col-xs-6" style="float: right;">
                   <div class="form-group">
                     <label style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px; float: right;" for="duty">الفئة الوظيفية</label>
-                      <select name="work_section[]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                      <select name="work_section[]" class="form-control">
                       @foreach(\App\position::get() as $pos)
                         <option value="{{$pos->name}}">{{$pos->name}}</option>
                         @endforeach
@@ -45,7 +45,7 @@
                 <div class="col-sm-6 col-xs-6" style="float: left;">
                   <div class="form-group">
                     <label for="work_hour" style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px; float: right;">سنوات الخبرة</label>
-                    <select name="working_period[]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                    <select name="working_period[]" class="form-control">
                      <option value="لايوجد">لايوجد</option>
                      <option value="سنة واحدة">سنة واحدة</option>
                      <option value="سنتين">سنتين</option>
@@ -62,7 +62,7 @@
                 <div class="col-sm-6 col-xs-6" style="float: right;">
                   <div class="form-group">
                     <label style="font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif; font-size: 13px; float: right;" for="supervisor">مكان العمل</label>
-                    <select name="work_place[]" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+                    <select name="work_place[]" class="form-control">
                       
                       @foreach(\App\City::get() as $city)
                         <option value="{{$city->name}}">{{$city->name}}</option>

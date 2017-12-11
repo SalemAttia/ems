@@ -15,7 +15,7 @@
 
             <h3 class="profile-username text-center">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</h3>
 
-            <p class="text-muted text-center">{{$employee->workexprince[0]->duties}}</p>
+            <p class="text-muted text-center"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>@if($duties){{$duties->duties}}@endif</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
@@ -44,8 +44,9 @@
                 }
               </style>
               <center>
-                
-                @foreach(\App\socialmeadi::where('employee_id' ,'=',$employee->id)->get() as $value)
+            <?php $soci = \App\socialmeadi::where('employee_id' ,'=',$employee->id)->get(); ?>
+              @if(count($soci) > 0)
+                @foreach($soci as $value)
                   
                    @if($value->soicalmedia == 'تويتر')
                    <a class="btn btn-primary btn-twitter btn-sm" target="_blank" href="//{{$value->soclink}}">
@@ -74,6 +75,7 @@
                     @endif
 
                   @endforeach
+                  @endif
 
               </center>
                   
@@ -185,6 +187,7 @@
               <!-- END timeline item -->
            
               <!-- timeline item -->
+
               <li>
                 <i class="fa fa-graduation-cap bg-yellow"></i>
 
@@ -237,7 +240,7 @@
                   
 
                   <h3 class="timeline-header"><a href="#">{{trans('demo.workexp')}}</a></h3>
-
+                  @if(count(\App\workexprince::where('employee_id' ,'=',$employee->id)->get()) > 0)
                   <div class="timeline-body">
                          <table class="table table-condensed">
                       <tbody>
@@ -269,9 +272,54 @@
                       
                     </table>
                   </div>
+                  @endif
                 </div>
               </li>
               <!-- END timeline item -->
+              <!-- training activity -->
+              <!-- timeline item -->
+              @if(count(\App\training_activity::where('employee_id' ,'=',$employee->id)->get()) > 0)
+              <li>
+                <i class="fa fa-briefcase bg-purple"></i>
+
+                <div class="timeline-item">
+                  
+
+                  <h3 class="timeline-header"><a href="#">{{trans('demo.training_activity')}}</a></h3>
+
+                  <div class="timeline-body">
+                         <table class="table table-condensed">
+                      <tbody>
+                      <tr style="text-align: center;">
+                        <th style="width: 10px">#</th>
+                        
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.name_of_training')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.training_center')}}</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">{{trans('demo.training_date')}}</th>
+                        
+                      </tr>
+                      
+                       <?php $i = 1;?>
+                      @foreach(\App\training_activity::where('employee_id' ,'=',$employee->id)->get() as $tra) 
+                      <tr style="font-size: 10px; text-align: center; font-weight: 150;">
+                        <td>{{$i}}</td>
+                        <td>{{$tra->traninigname}}</td>
+                        <td>{{$tra->destination}}</td>
+                        <td>{{$tra->dateoftraninig}}</td>
+                        
+                        <?php $i++;?>
+                      </tr> 
+                
+                  @endforeach
+                      
+                    </table>
+                  </div>
+                </div>
+              </li>
+              <!-- END timeline item -->
+              @endif
+              <!-- end trainig activity -->
+              @if($employee->shortdesc)
               <!-- timeline item -->
               <li>
                 <i class="fa fa-file-text-o bg-green"></i>
@@ -288,7 +336,10 @@
                   </div>
                 </div>
               </li>
+              @endif
               <!-- END timeline item -->
+              <?php $soci = \App\socialmeadi::where('employee_id' ,'=',$employee->id)->get(); ?>
+              @if(count($soci) > 0)
               <!-- timeline item -->
               <li>
                 <i class="fa fa-users" style="background: #3c8dbc !important; color: #fff;"></i>
@@ -340,6 +391,7 @@
                 </div>
               </li>
               <!-- END timeline item -->
+              @endif
               
             </ul>
           </div>

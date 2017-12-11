@@ -53,4 +53,8 @@ return [
     'maininfo' => 'المعلومات الاساسية ',
     'educa_step' => 'بيانات التعليم والمعرفة',	
     'socialme' => 'وسائل التواصل',
+    'training_activity' => 'الدورات التدريبية',
+    'name_of_training' => 'اسم الدورة',
+    'training_center' => 'جهة التدريب',
+    'training_date' => 'تاريخ الالتحاق',
 ];

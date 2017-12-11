@@ -56,6 +56,9 @@
 <!-- Bootstrap 3.3.6 -->
 
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/vue.js')}}"></script>
+<script src="{{asset('js/vue-resource.js')}}"></script>
+<script src="{{asset('js/myvue.js')}}"></script>
 <!-- AdminLTE App -->
 <script type="text/javascript">
     $(document).ready(function(){

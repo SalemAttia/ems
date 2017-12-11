@@ -28,8 +28,12 @@ class User extends Authenticatable
     public function pictuer()
     {
         $employee = Employee::select('picture')->where('user_id',$this->id)->first();
-
+       if($employee){
         return $employee->picture;
+    }else
+    {
+        return false;
+    }
     }
 
     

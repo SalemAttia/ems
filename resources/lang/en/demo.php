@@ -53,4 +53,8 @@ return [
     'educa_step' => 'Education',	
     'socialme' => 'social Media',
     'shortdesc' => 'about you',
+    'training_activity' => 'training activity',
+    'name_of_training' => 'name of training',
+    'training_center' => 'training center',
+    'training_date' => 'training date',
 ];

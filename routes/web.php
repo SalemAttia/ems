@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/',function(){
 	return view('home');
 });
+Route::get('/profile/api/division/{id}','HomeController@division');
+Route::get('/api/division/{id}','HomeController@division');
 
 
 Route::group(['prefix' => 'company'],function()

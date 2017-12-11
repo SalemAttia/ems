@@ -51,7 +51,7 @@
                  <i class="fa fa-calendar"></i>
                </div>
 
-               <input required=""  style="<?php if ($errors->has('birthdate')) echo 'border: 1px solid red;';?>" type="text" class="form-control" value="{{ old('birthdate') }}" placeholder="شهر/يوم/سنة" onfocus="(this.type='date')"  class="form-control pull-right" name="birthdate" placeholder="" id="birthDate" />
+               <input required=""  style="<?php if ($errors->has('birthdate')) echo 'border: 1px solid red;';?>" type="text" class="form-control" value="{{\Auth::user()->birthdate}}" placeholder="شهر/يوم/سنة" onfocus="(this.type='date')"  class="form-control pull-right" name="birthdate" placeholder="" id="birthDate" />
              </div>
            </div>
          </div>
@@ -73,7 +73,7 @@
               @endif</label>
 
 
-              <select name="nationality" value="{{ old('nationality') }}" style="<?php if ($errors->has('nationality')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control">
+              <select name="nationality" value="{{ old('nationality') }}" v-model="nationality" v-on:change="nationalitychange()" style="<?php if ($errors->has('nationality')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control">
                 <option value="">الجنسية</option>
                 @include('partial.countries')
               </select>
@@ -85,7 +85,7 @@
           <div class="col-sm-6 col-xs-6" style="float: left;">
             <div class="form-group">
               <label for="city_id">خلاصة القيد <button type="button" style="background: #fff;border: 0;" id="pop2" title="" data-content="<b>لمواطني دولة الامارات فقط</b>" data-placement="left" data-toggle="popover" class="fa fa-info-circle" data-original-title="" data-html="true"></button><sup class="color-red ">*</sup></label>
-              <select name="Summary_of_enrollment" class="form-control select2-hidden-accessible" selected="selected" tabindex="-1" aria-hidden="true">
+              <select name="Summary_of_enrollment" v-bind:disabled="nationality" class="form-control">
                 <option value="">خلاصة القيد</option>
                 @foreach(\App\City::get() as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -110,8 +110,10 @@
           </div>
            <div class="col-sm-6 col-xs-6" style="float: left;">
               <div class="form-group">
-                <label for="email">الايميل <sup class="color-red "></sup></label>
-                <input type="email" dir="rtl" class="form-control" value="{{\Auth::user()->email}}" name="email" id="email" placeholder="الايميل">
+                <label for="email">الايميل <sup class="color-red "></sup>@if ($errors->has('email'))
+              <span class="" style="font-size: 9px; color: red;">مطلوب</span>
+              @endif</label>
+                <input type="email" dir="rtl" class="form-control" value="{{\Auth::user()->email}}" name="email" style="<?php if ($errors->has('email')) echo 'border: 1px solid red;';?> width: 99%;" id="email" placeholder="الايميل">
               </div>
             </div>
             <div class="col-sm-6 col-xs-6" style="float: right;">
@@ -119,7 +121,7 @@
               <label for="phone">الهاتف المتحرك<sup class="color-red ">*</sup> @if ($errors->has('phone1'))
                 <span class="" style="font-size: 9px; color: red;">مطلوب</span>
                 @endif</label>
-                <input type="number"  style="<?php if ($errors->has('phone1')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control" id="phone" name="phone1" placeholder="الهاتف المتحرك" value="{{ \Auth::user()->phone }}" dir="rtl">
+                <input type="number"  style="<?php if ($errors->has('phone1')) echo 'border: 1px solid red;';?> width: 99%;" class="form-control" id="phone" name="phone1" placeholder="الهاتف المتحرك" value="{{\Auth::user()->phone}}" dir="rtl">
               </div>
             </div>
             <div class="col-sm-6 col-xs-6" style="float: left;">
@@ -128,40 +130,33 @@
                 <input type="text" class="form-control" name="phone2" id="phone2" value="{{ old('phone2') }}" placeholder="الهاتف المتحرك 2" dir="rtl">
               </div>
             </div>
+
+            <!-- /*new edits*/ -->
             <div class="col-sm-6 col-xs-6" style="float: right;">
-              <div class="form-group">
-                <label class="filter-col" style="margin-right:0;" for="hamam">أصحاب الهمم <button type="button" style="background: #fff;border: 0;" id="pop" title="" data-content="<b>المعروفين سابقاً بذوي الإعاقة/الاحتياجات الخاصة
-                  وفقاً للسياسة الوطنية لتمكين ذوي الإعاقة، قررت حكومة دولة الإمارات إعادة تسمية هذه الفئة بأصحاب الهمم، وذلك اعترافاً بجهودها الملحوظة في تحقيق الإنجازات، والتغلب على جميع التحديات في مختلف الميادين الحيوية في الدولة.
-                </b>" data-placement="left" data-toggle="popover" class="fa fa-info-circle" data-original-title="" data-html="true"></button> </label>
-
-                <div class="">
-                  <label>
-                    <input type="radio" name="The_owners_of_inspiration" value="نعم" class="flat-red"> نعم
-                  </label>
-                  <label>
-                    <input type="radio" name="The_owners_of_inspiration" value="لا" class="flat-red" checked=""> لا
-                  </label>
-
-                </div> 
-              </div>
+            <div class="form-group">
+              <label for="city_id">مكان الاقامة<sup class="color-red ">*</sup> @if ($errors->has('city_id'))
+                <span class="" style="font-size: 9px; color: red;">مطلوب</span>@endif</label>
+              <select name="city_id" class="form-control" v-model="city_id" v-on:change="citychange()"  style="<?php if ($errors->has('city_id')) echo 'border: 1px solid red;';?>">
+                <option value="" selected="">مكان الاقامة</option>
+                @foreach(\App\City::get() as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+              </select>
             </div>
-
-            <div class="col-sm-6 col-xs-6" style="float: left;">
-              <div class="form-group">
-                <label class="filter-col" style="margin-right:0;" for="volunteer">هل تريد العمل ضمن برامج المتطوعين</label>
-                <!-- radio -->
-                <div class="">
-                  <label>
-                    <input type="radio" name="volunteer" value="نعم" class="flat-red" checked> نعم
-                  </label>
-                  <label>
-                    <input type="radio" name="volunteer" value="لا" class="flat-red"> لا
-                  </label>
-
-                </div>
-
-              </div>
+          </div>
+          <div class="col-sm-6 col-xs-6" style="float: left;">
+            <div class="form-group">
+              <label for="city_id">المنطقة<sup class="color-red ">*</sup> @if ($errors->has('division_id'))
+                <span class="" style="font-size: 9px; color: red;">مطلوب</span>@endif</label>
+              <select name="division_id" v-bind:disabled="discity_id" class="form-control" style="<?php if ($errors->has('division_id')) echo 'border: 1px solid red;';?>">
+                <option  v-for="divi in division" value="@{{divi.id}}"> @{{divi.name}}</option>
+              
+              </select>
             </div>
+          </div>
+           <!--  /*end new edits*/ -->
+               
+
 
             <input type="hidden" name="jobtitle" value="null">
                  <!--  <div class="col-sm-6 col-xs-6" style="float: right;">

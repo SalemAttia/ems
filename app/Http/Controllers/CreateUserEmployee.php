@@ -14,6 +14,7 @@ use App\Division;
 use App\socialmeadi;
 use App\education;
 use App\workexprince;
+use App\training_activity;
 use Session;
 use App\User;
  
@@ -79,36 +80,39 @@ class CreateUserEmployee extends Controller
 
      
         $this->validateInput($request);
-        // Upload image
-        // $emp = Employee::find(11);
-        // $this->workexprince($request,$emp);
-        // return 'ok';
 
-        $path = $request->file('picture')->store('avatars');
-        $cv = $request->file('cv')->store('cvs');
-        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status'];
+        // $cv = $request->file('cv')->store('cvs');
+        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status','division_id','city_id'];
         $input = $this->createQueryInput($keys, $request);
-        $input['picture'] = $path;
-        $input['cv'] = $cv;
-        $input['user_id'] = \Auth::user()->id;
+        if($request->file('picture')){
+             $path = $request->file('picture')->store('avatars');
+             $input['picture'] = $path;
+         }
+         $input['user_id'] = \Auth::user()->id;
+        
+        $input['langauges'] = serialize($request->langauges);
+        
+        // $input['cv'] = $cv;
         // Not implement yet
         $input['company_id'] = 0;
         $emp = Employee::create($input);
 
         if($emp){
+
            
             // education
             $this->education($request,$emp);
+            //first time update
+            $this->updateFirstTime();
             // work experances
             $this->workexprince($request,$emp);
-
             //socialmedia
             $this->soicalmedia($request,$emp);
-
-            $this->updateFirstTime();
+            // training_activity
+            $this->training_activity($request,$emp);  
 
         }//end
-        Session::flash('messagea' , 'تم تعديل البيانات بنجاح');
+        Session::flash('messagea' , 'تم اضافة موظف');
         Session::flash('m-classa' , 'alert-success');
 
         return redirect()->intended('/profile');
@@ -349,7 +353,8 @@ class CreateUserEmployee extends Controller
             'birthdate'  => 'required',
             'phone1'  => 'required',
             'gender'  => 'required',
-
+            'city_id'  => 'required',
+            'email'  => 'required',
         ]);
     }
 
@@ -365,7 +370,8 @@ class CreateUserEmployee extends Controller
 
     private function education($request,$emp)
     {
-        $to = count($request->university_name);
+        if(count(array_filter($request->university_name, 'strlen')) > 0){
+        $to = count(array_filter($request->university_name, 'strlen'));
            
             $degree_name = array();
             $university_name = array();
@@ -390,11 +396,13 @@ class CreateUserEmployee extends Controller
               
             }
             return true;
+        }
+        return true;
     }
 
     private function workexprince($request,$emp){
-
-           $to = count($request->company_name);
+            if(count(array_filter($request->company_name, 'strlen')) > 0){
+           $to = count(array_filter($request->company_name, 'strlen'));
             
             $company_name = array();
             $working_period = array();
@@ -424,10 +432,13 @@ class CreateUserEmployee extends Controller
                }
             }
             return true;
+        }
+        return true;
     }
 
     private function soicalmedia($request,$emp){
-           $to = count($request->soicalmedia);
+           if(count(array_filter($request->soclink, 'strlen')) > 0){
+           $to = count(array_filter($request->soclink, 'strlen'));
            
             $socila = array();
             $working_period = array();
@@ -437,7 +448,7 @@ class CreateUserEmployee extends Controller
             $soclink = $request->soclink;
             
             for ($i=0; $i < $to; $i++) { 
-                 $socialmeadi = new socialmeadi();
+               $socialmeadi = new socialmeadi();
                $socialmeadi->soicalmedia = $socila[$i];
                $socialmeadi->soclink = $soclink[$i];
                $socialmeadi->employee_id = $emp->id;
@@ -448,8 +459,43 @@ class CreateUserEmployee extends Controller
                
             }
             return true;
+        }
+        return true;
     }
 
+    private function training_activity($request,$emp)
+    {
+
+        if(count(array_filter($request->traninigname, 'strlen')) > 0){
+           
+           $to = count(array_filter($request->traninigname, 'strlen'));
+           
+            $traninigname = array();
+            $destination = array();
+            $dateoftraninig = array();
+            
+            $traninigname = $request->traninigname;
+            $destination = $request->destination;
+            $dateoftraninig = $request->dateoftraninig;
+            
+            for ($i=0; $i < $to; $i++) { 
+               $trainig = new training_activity();
+               $trainig->traninigname = $traninigname[$i];
+               $trainig->destination = $destination[$i];
+               $trainig->dateoftraninig = $dateoftraninig[$i];
+               $trainig->employee_id = $emp->id;
+               $save = $trainig->save();
+               if(!$save){
+                 return 'error';
+               }
+               
+            }
+            return true; 
+        }
+        else{
+           return true;
+        }  
+    }
     private function updateFirstTime()
     {
        $user_id = \Auth::user()->id;

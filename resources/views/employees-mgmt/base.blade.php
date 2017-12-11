@@ -204,8 +204,9 @@ $(document).ready(function(){
 
 });
 </script>
-<script type="text/javascript">
 <!-- talant -->
+<script type="text/javascript">
+
 $(document).ready(function(){
   var i=1;
   $("#add_rowta").click(function(){

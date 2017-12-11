@@ -17,6 +17,8 @@
               </div>
             </div>
             <!-- /.col -->
+            <br>
+            <div class="clearfix"></div>
             <div class="form-group">
             <label>معلومات عن  الموهبة</label>
               <textarea class="form-control" rows="3" name="description_talant" placeholder="معلومات عن  الموهبة"></textarea>

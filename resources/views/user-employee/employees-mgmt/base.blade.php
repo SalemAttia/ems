@@ -8,6 +8,17 @@
 @else
 <link rel="stylesheet" href="{{asset('dist/css/timeline.css')}}">
 @endif
+<!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
+  <style type="text/css">
+    .select2-container .select2-selection--single {
+    height: 34px !important;
+    border-radius: unset !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #b39c6a !important;
+    }
+  </style>
 @endsection
 @section('content')
 
@@ -41,7 +52,13 @@
 
 @endsection
 @section('js')
-
+<script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
+  });
+</script>
 <script type="text/javascript">
 
 // Activate Next Step
@@ -132,7 +149,7 @@ $(document).ready(function() {
 $(document).ready(function(){
   var i=1;
   $("#add_row").click(function(){
-    $('#addr'+i).html("<td>"+ (i+1) +"</td><td><select name='degree_name[]'' class='form-control select2-hidden-accessible' style='width:150px;' selected='selected' tabindex='-1' aria-hidden='true'>@foreach(\App\degree::get() as $degree)<option value='{{$degree->name}}'>{{$degree->name}}</option>@endforeach</select></td><td><input  name='university_name[]' type='text' placeholder='جهة الدراسة'  class='form-control input-md'></td><td><input  name='cgp[]' type='text' placeholder='التخصص'  class='form-control input-md'></td><td><select id='passing_year' style='width:120px;' name='passing_year[]' class='form-control'><?php for($i= 1950; $i<=2020; $i++){ ?><option value='{{$i}}'>{{$i}}</option><?php } ?></select></td>");
+    $('#addr'+i).html("<td>"+ (i+1) +"</td><td><select name='degree_name[]'' class='form-control' style='width:150px;'>@foreach(\App\degree::get() as $degree)<option value='{{$degree->name}}'>{{$degree->name}}</option>@endforeach</select></td><td><input  name='university_name[]' type='text' placeholder='جهة الدراسة'  class='form-control input-md'></td><td><input  name='cgp[]' type='text' placeholder='التخصص'  class='form-control input-md'></td><td><select id='passing_year' style='width:120px;' name='passing_year[]' class='form-control'><?php for($i= 1950; $i<=2020; $i++){ ?><option value='{{$i}}'>{{$i}}</option><?php } ?></select></td>");
 
     $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
     i++; 
@@ -151,7 +168,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   var i=1;
   $("#add_rowt").click(function(){
-    $('#addrt'+i).html("<td>"+ (i+1) +"</td><td><select style='font-size:10px !important; min-width:110px;' name='work_type[]' class='form-control select2-hidden-accessible' selected='selected' tabindex='-1' aria-hidden='true'> <option value='>الحالة العملية</option> @foreach(\App\Department::get() as $dep)<option value='{{$dep->name}}'>{{$dep->name}}</option>@endforeach</select></td><td><input name='company_name[]' style='font-size:9px !important; min-width:110px;' type='text' placeholder='جهة العمل' class='form-control input-md'  /> </td><td><input  name='duties[]' style='font-size:9px !important; min-width:110px;'  type='text' placeholder='المسمى الوظيفى'  class='form-control input-md'></td><td><select name='work_section[]' style='font-size:10px !important; min-width:115px' class='form-control select2-hidden-accessible' selected='selected' tabindex='-1' aria-hidden='true'><option value='الفئة الوظيفية'>الفئة الوظيفية</option> @foreach(\App\position::get() as $pos)<option value='{{$pos->name}}'>{{$pos->name}}</option>@endforeach</select></td><td><select name='working_period[]' style='font-size:10px !important; min-width:110px;' class='form-control select2-hidden-accessible' selected='selected' tabindex='-1' aria-hidden='true'><option value='لايوجد'>لايوجد</option><option value='سنة واحدة'>سنة واحدة</option><option value='سنتين'>سنتين</option><option value='3 سنوات'>3 سنوات</option><option value='4 سنوات'>4 سنوات</option><option value='5 سنوات'>5 سنوات</option><option value='اكثر من 5 سنوات'>اكثر من 5 سنوات</option></select></td><td><select name='work_place[]' style='font-size:10px !important; min-width:110px;' class='form-control select2-hidden-accessible' selected='selected' tabindex='-1' aria-hidden='true'><option value='مكان العمل'>مكان العمل</option>@foreach(\App\City::get() as $city)<option value='{{$city->name}}'>{{$city->name}}</option>@endforeach</select></td>");
+    $('#addrt'+i).html("<td>"+ (i+1) +"</td><td><select style='font-size:10px !important; min-width:110px;' name='work_type[]' class='form-control'> <option value='>الحالة العملية</option> @foreach(\App\Department::get() as $dep)<option value='{{$dep->name}}'>{{$dep->name}}</option>@endforeach</select></td><td><input name='company_name[]' style='font-size:9px !important; min-width:110px;' type='text' placeholder='جهة العمل' class='form-control input-md'  /> </td><td><input  name='duties[]' style='font-size:9px !important; min-width:110px;'  type='text' placeholder='المسمى الوظيفى'  class='form-control input-md'></td><td><select name='work_section[]' style='font-size:10px !important; min-width:115px' class='form-control'><option value='الفئة الوظيفية'>الفئة الوظيفية</option> @foreach(\App\position::get() as $pos)<option value='{{$pos->name}}'>{{$pos->name}}</option>@endforeach</select></td><td><select name='working_period[]' style='font-size:10px !important; min-width:110px;' class='form-control'><option value='لايوجد'>لايوجد</option><option value='سنة واحدة'>سنة واحدة</option><option value='سنتين'>سنتين</option><option value='3 سنوات'>3 سنوات</option><option value='4 سنوات'>4 سنوات</option><option value='5 سنوات'>5 سنوات</option><option value='اكثر من 5 سنوات'>اكثر من 5 سنوات</option></select></td><td><select name='work_place[]' style='font-size:10px !important; min-width:110px;' class='form-control'><option value='مكان العمل'>مكان العمل</option>@foreach(\App\City::get() as $city)<option value='{{$city->name}}'>{{$city->name}}</option>@endforeach</select></td>");
     $('#tab_logict').append('<tr id="addrt'+(i+1)+'"></tr>');
     i++; 
   });
@@ -170,7 +187,8 @@ $(document).ready(function(){
 $(document).ready(function(){
   var i=1;
   $("#add_rowtt").click(function(){
-    $('#addrtt'+i).html("<td>"+ (i+1) +"</td><td><select id='pref-perpage' class='form-control' name='soicalmedia[]'>@foreach(\App\social::get() as $soc)<option value='{{$soc->name}}'>{{$soc->name}}</option>@endforeach </select> </td><td><input  name='soclink[]' type='text' placeholder='لينك'  class='form-control input-md'></td>");
+    $('#addrtt'+i).html("<td>"+ (i+1) +"</td><td><select id='pref-perpage' class='form-control' name='soicalmedia[]'><option value='fb'>فيس بوك</option><option value='tw'>تويتر</option><option value='link'>لينكد ان</option><option value='githup'>githup</option><option value='google'>google-plus</option><option value='behance'>behance</option></select>  </td><td><input  name='soclink[]' type='text' placeholder='لينك'  class='form-control input-md'></td>");
+
     $('#tab_logictt').append('<tr id="addrtt'+(i+1)+'"></tr>');
     i++; 
   });
@@ -183,6 +201,27 @@ $(document).ready(function(){
 
 });
 </script>
+<!-- talant -->
+<script type="text/javascript">
+
+$(document).ready(function(){
+  var i=1;
+  $("#add_rowta").click(function(){
+    $('#addrta'+i).html("<td>"+ (i+1) +"</td><td><input  name='traninigname[]' type='text' placeholder='اسم الدورة التدريبية'  class='form-control input-md'></td><td><input  name='destination[]' type='text' placeholder='جهة التدريب'  class='form-control input-md'></td><td><td><input  name='dateoftraninig[]' type='date' placeholder='تاريخ الالتحاق'  class='form-control input-md'></td>");
+
+    $('#tab_logicta').append('<tr id="addrta'+(i+1)+'"></tr>');
+    i++; 
+  });
+  $("#delete_rowta").click(function(){
+   if(i>1){
+     $("#addrta"+(i-1)).html('');
+     i--;
+   }
+ });
+
+});
+</script>
+<!-- endtalant -->
 
 <!-- CK Editor -->
 <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
@@ -197,5 +236,4 @@ $(document).ready(function(){
     $(".textarea").wysihtml5();
   });
 </script>
-
 @endsection

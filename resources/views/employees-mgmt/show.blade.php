@@ -7,11 +7,20 @@
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="{{asset('/admin/'.$employee->picture)}}" alt="User profile picture">
+           @if($employee->picture)
+                 <img class="profile-user-img img-responsive img-circle" src="{{asset('/admin/'.$employee->picture)}}" alt="User profile picture">
+            @else
+            @if($employee->gender == 'امرأة')
+            <img class="profile-user-img img-responsive img-circle" src="{{asset('/avatars/fmale.png')}}" alt="User profile picture">
+            @else
+            <img class="profile-user-img img-responsive img-circle" src="{{asset('/avatars/avatar.png')}}" alt="User profile picture">
+            @endif
+           @endif
+            
 
             <h3 class="profile-username text-center">{{$employee->firstname}} {{$employee->middlename}} {{$employee->last_name}}</h3>
 
-            <p class="text-muted text-center">{{$employee->jobtitle}}</p>
+            <p class="text-muted text-center"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>@if($duties){{$duties->duties}}@endif</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
@@ -33,6 +42,7 @@
               <li class="list-group-item">
                 <b style="font-weight: 500;font-size: 11px;"><i class="fa fa-inbox"></i>الايميل</b> <a class="pull-left" style="font-weight: 300;font-size: 11px;">{{$employee->email}}</a>
               </li>
+               @if(\App\socialmeadi::where('employee_id' ,'=',$employee->id)->get())
               <li class="list-group-item">
               <style type="text/css">
                 .abcd{
@@ -40,7 +50,7 @@
                 }
               </style>
               <center>
-                
+               
                 @foreach(\App\socialmeadi::where('employee_id' ,'=',$employee->id)->get() as $value)
                   
                    @if($value->soicalmedia == 'تويتر')
@@ -70,12 +80,14 @@
                     @endif
 
                   @endforeach
+                  
 
               </center>
                   
                  
                 
               </li>
+              @endif
 
             </ul>
 
@@ -92,28 +104,35 @@
           <!-- /.box-header -->
           <div class="box-body">
             
+          
+           <?php $mylanga = (new \App\helpers\langaugaes)->mylang();?>
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> العنوان</strong>
 
             <p class="text-muted">{{$employee->address}}</p>
+            @if($employee->langauges)
+            @if ($employee->langauges != 'N;') 
+            <?php $lang = unserialize($employee->langauges); ?>
+            <hr>
 
-           <!--  <hr>
-
-            <strong><i class="fa fa-pencil margin-r-5"></i> المهارات</strong>
+            <strong><i class="fa fa-pencil margin-r-5"></i> الغات</strong>
 
             <p>
-              <span class="label label-danger">UI Design</span>
-              <span class="label label-success">Coding</span>
-              <span class="label label-info">Javascript</span>
-              <span class="label label-warning">PHP</span>
-              <span class="label label-primary">Node.js</span>
+            @foreach($lang as $la)
+              <?php $la = strtolower($la)?>
+              <span class="label label-info">{{$mylanga[$la]}}</span>
+             @endforeach
             </p>
- -->
+            
+            @endif
+            @endif
+           @if($employee->shortdesc)
             <hr>
 
             <strong><i class="fa fa-file-text-o margin-r-5"></i>ملاحظات</strong>
 
             <p>{!!$employee->shortdesc!!}</p>
+            @endif
           </div>
           <!-- /.box-body -->
         </div>
@@ -226,6 +245,7 @@
               </li>
               <!-- /.timeline-label -->
               <!-- timeline item -->
+              @if(count(\App\workexprince::where('employee_id' ,'=',$employee->id)->get()) > 0)
               <li>
                 <i class="fa fa-briefcase bg-purple"></i>
 
@@ -268,6 +288,51 @@
                 </div>
               </li>
               <!-- END timeline item -->
+              @endif
+              <!-- training activity -->
+              <!-- timeline item -->
+              @if(count(\App\training_activity::where('employee_id' ,'=',$employee->id)->get()) > 0)
+              <li>
+                <i class="fa fa-briefcase bg-purple"></i>
+
+                <div class="timeline-item">
+                  
+
+                  <h3 class="timeline-header"><a href="#"></a>الدورات التدريبية</h3>
+
+                  <div class="timeline-body">
+                         <table class="table table-condensed">
+                      <tbody>
+                      <tr style="text-align: center;">
+                        <th style="width: 10px">#</th>
+                        
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">اسم الدورة</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">جهة التدريب</th>
+                        <th style="font-size: 10px; text-align: center; font-weight: 150;">تاريخ الالتحاق</th>
+                        
+                      </tr>
+                      
+                       <?php $i = 1;?>
+                      @foreach(\App\training_activity::where('employee_id' ,'=',$employee->id)->get() as $tra) 
+                      <tr style="font-size: 10px; text-align: center; font-weight: 150;">
+                        <td>{{$i}}</td>
+                        <td>{{$tra->traninigname}}</td>
+                        <td>{{$tra->destination}}</td>
+                        <td>{{$tra->dateoftraninig}}</td>
+                        
+                        <?php $i++;?>
+                      </tr> 
+                
+                  @endforeach
+                      
+                    </table>
+                  </div>
+                </div>
+              </li>
+              <!-- END timeline item -->
+              @endif
+              <!-- end trainig activity -->
+              @if($employee->shortdesc)
               <!-- timeline item -->
               <li>
                 <i class="fa fa-file-text-o bg-green"></i>
@@ -284,7 +349,10 @@
                   </div>
                 </div>
               </li>
+              @endif
               <!-- END timeline item -->
+              <?php $soci = \App\socialmeadi::where('employee_id' ,'=',$employee->id)->get(); ?>
+              @if(count($soci) > 0)
               <!-- timeline item -->
               <li>
                 <i class="fa fa-users" style="background: #3c8dbc !important; color: #fff;"></i>
@@ -336,7 +404,7 @@
                 </div>
               </li>
               <!-- END timeline item -->
-              
+              @endif
             </ul>
           </div>
           <!-- /.tab-pane -->

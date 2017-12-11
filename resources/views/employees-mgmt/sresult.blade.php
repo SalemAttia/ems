@@ -18,17 +18,23 @@
 
                 </div>
                 <div class="avatar">
+                @if($employee->picture)
                   <img alt="" src="{{asset('/admin/'.$employee->picture)}}">
+                  @else
+                  <img alt="" src="{{asset('/avatars/avatar.png')}}">
+                  @endif
                 </div>
                 <div class="info">
                   <div class="title">
                     <a target="_blank" href="{{url('admin/employee-management/'.$employee->id)}}">{{ $employee->firstname }} {{$employee->middlename}}</a>
                   </div>
-                  <div class="desc"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>{{$duties->duties}}</div>
+                  <div class="desc"><?php $duties = \App\workexprince::where('employee_id','=',$employee->id)->select('duties')->first(); ?>
+                  @if($duties){{$duties->duties}}@endif</div>
                   <div class="desc">{{$employee->address}}</div>
                   <div class="desc">{{$employee->phone1}}</div>
                 </div>
                 <div class="bottom">
+                @if(\App\socialmeadi::where('employee_id' ,'=',$employee->id)->get())
                 @foreach(\App\socialmeadi::where('employee_id' ,'=',$employee->id)->get() as $value)
                   
                    @if($value->soicalmedia == 'تويتر')
@@ -58,6 +64,7 @@
                     @endif
 
                   @endforeach
+                  @endif
                  
             </div>
           </div>

@@ -24,5 +24,9 @@ class Employee extends Model
     public function workexprince(){
         return $this->hasMany('App\workexprince');
     }
+
+     public function training_activity(){
+        return $this->hasMany('App\training_activity');
+    }
     
 }

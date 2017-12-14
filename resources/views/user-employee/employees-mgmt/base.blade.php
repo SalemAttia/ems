@@ -187,7 +187,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   var i=1;
   $("#add_rowtt").click(function(){
-    $('#addrtt'+i).html("<td>"+ (i+1) +"</td><td><select id='pref-perpage' class='form-control' name='soicalmedia[]'><option value='fb'>فيس بوك</option><option value='tw'>تويتر</option><option value='link'>لينكد ان</option><option value='githup'>githup</option><option value='google'>google-plus</option><option value='behance'>behance</option></select>  </td><td><input  name='soclink[]' type='text' placeholder='لينك'  class='form-control input-md'></td>");
+    $('#addrtt'+i).html("<td>"+ (i+1) +"</td><td><select id='pref-perpage' class='form-control' name='soicalmedia[]'> @foreach(\App\social::get() as $soc)<option value='{{$soc->name}}'>{{$soc->name}}</option>@endforeach</select>  </td><td><input  name='soclink[]' type='text' placeholder='لينك'  class='form-control input-md'></td>");
 
     $('#tab_logictt').append('<tr id="addrtt'+(i+1)+'"></tr>');
     i++; 
@@ -207,7 +207,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   var i=1;
   $("#add_rowta").click(function(){
-    $('#addrta'+i).html("<td>"+ (i+1) +"</td><td><input  name='traninigname[]' type='text' placeholder='اسم الدورة التدريبية'  class='form-control input-md'></td><td><input  name='destination[]' type='text' placeholder='جهة التدريب'  class='form-control input-md'></td><td><td><input  name='dateoftraninig[]' type='date' placeholder='تاريخ الالتحاق'  class='form-control input-md'></td>");
+    $('#addrta'+i).html("<td>"+ (i+1) +"</td><td><input  name='traninigname[]' type='text' placeholder='اسم الدورة التدريبية'  class='form-control input-md'></td><td><input  name='destination[]' type='text' placeholder='جهة التدريب'  class='form-control input-md'></td><td><input  name='dateoftraninig[]' type='date' placeholder='تاريخ الالتحاق'  class='form-control input-md'></td>");
 
     $('#tab_logicta').append('<tr id="addrta'+(i+1)+'"></tr>');
     i++; 

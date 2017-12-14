@@ -9,6 +9,7 @@ use App\User;
 use App\Division;
 use Validator;
 use Session;
+use Response;
 
 class HomeController extends Controller
 {
@@ -140,4 +141,6 @@ class HomeController extends Controller
     {
       return Division::where('city_id',$id)->get();
     }
+
+    
 }

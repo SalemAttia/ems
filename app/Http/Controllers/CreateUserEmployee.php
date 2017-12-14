@@ -193,17 +193,17 @@ class CreateUserEmployee extends Controller
         // $this->validateInput($request);
         // Upload image
          
-        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status'];
+        $keys = ['firstname', 'middlename', 'address', 'state_id', 'address2','country_id','last_name','nationality','Summary_of_enrollment','volunteer','The_owners_of_inspiration','qualification','birthdate','shortdesc','phone1','phone2','email','jobtitle','gender','social_status','division_id','city_id'];
         $input = $this->createQueryInput($keys, $request);
         if ($request->file('picture')) {
             $path = $request->file('picture')->store('avatars');
             $input['picture'] = $path;
         }
 
-        if($request->file('cv')){
-            $path = $request->file('cv')->store('cvs');
-            $input['cv'] = $path;
-        }
+        // if($request->file('cv')){
+        //     $path = $request->file('cv')->store('cvs');
+        //     $input['cv'] = $path;
+        // }
 
         $emp = Employee::where('id', $id)
             ->update($input);
@@ -213,6 +213,7 @@ class CreateUserEmployee extends Controller
             education::where('employee_id','=',$id)->delete();
             workexprince::where('employee_id','=',$id)->delete(); 
             socialmeadi::where('employee_id','=',$id)->delete();
+            training_activity::where('employee_id','=',$id)->delete();
             $emp = Employee::find($id);
              // education
             $this->education($request,$emp);
@@ -221,6 +222,10 @@ class CreateUserEmployee extends Controller
 
             //socialmedia
             $this->soicalmedia($request,$emp);
+
+
+            // training_activity
+            $this->training_activity($request,$emp);
           
 
         }//end

@@ -23,7 +23,8 @@
               </li>
               @if($employee->Summary_of_enrollment)
               <li class="list-group-item">
-                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-user"></i>{{trans('demo.Summary_of_enrollment')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;">{{$employee->Summary_of_enrollment}}</a>
+                <b style="font-weight: 300;font-size: 11px;"><i class="fa fa-user"></i>{{trans('demo.Summary_of_enrollment')}} </b> <a class="<?php if ( Session('locale') == 'en') echo 'pull-right'; else echo 'pull-left';?>" style="font-weight: 300;font-size: 11px;"><?php $sumer = \App\City::find($employee->Summary_of_enrollment);
+                ?>{{$sumer->name}}</a>
               </li>
               @endif
               <li class="list-group-item">

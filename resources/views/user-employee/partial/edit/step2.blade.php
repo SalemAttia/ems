@@ -34,6 +34,8 @@
                       <tr id='addr1'></tr>
                     </tbody>
                   </table>
+                  <br>
+                  @include('partial.edit.talantedLangaugeTraining')
 
                 </div>
 

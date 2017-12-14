@@ -18,13 +18,20 @@
       </div>
 
       <div>
+      @if ( Session('locale') == 'en')
+        @include('user-employee.partial.edit.en.step1')
+         @include('user-employee.partial.edit.en.step2')
+         @include('user-employee.partial.edit.en.step3')
+         @include('user-employee.partial.edit.en.step4')
+         @include('user-employee.partial.edit.en.step5')
+       @else
 
-       @include('partial.edit.step1')
-       @include('partial.edit.step2')
-       @include('partial.edit.step3')
-       @include('partial.edit.step4')
-       @include('partial.edit.step5')
-        
+       @include('user-employee.partial.edit.step1')
+       @include('user-employee.partial.edit.step2')
+       @include('user-employee.partial.edit.step3')
+       @include('user-employee.partial.edit.step4')
+       @include('user-employee.partial.edit.step5')
+      @endif
        
      
     

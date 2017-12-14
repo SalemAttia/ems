@@ -9,6 +9,7 @@
 |
 */
 
+Route::get('/users/all','HomeController@custusers');
 Route::get('/sms/{code}','HomeController@sms');
 Route::get('/sms','HomeController@newsms');
 Route::get('/home','HomeController@index');

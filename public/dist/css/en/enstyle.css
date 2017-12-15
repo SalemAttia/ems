@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Droid Arabic Kufi';
-    src: url('../fonts/DroidKufi-Bold.eot');
-    src: url('../fonts/DroidKufi-Bold.eot?#iefix') format('embedded-opentype'),
+    src: url('../profile/fonts/DroidKufi-Bold.eot');
+    src: url('../profile/fonts/DroidKufi-Bold.eot?#iefix') format('embedded-opentype'),
     url('../fonts/DroidKufi-Bold.woff') format('woff'),
     url('../fonts/DroidKufi-Bold.woff2') format('woff2'),
     url('../fonts/DroidKufi-Bold.ttf') format('truetype'),
@@ -11,9 +11,21 @@
     font-style: normal;
 }
 
+
 body {
     font-family: 'Droid Arabic Kufi', Tahoma, Geneva, sans-serif;
    
+}
+body::-webkit-scrollbar {
+  width: 5px;
+  display: block;
+}
+body::-webkit-scrollbar-track {
+  background: #b39c6a;
+  margin-left: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #ecf0f5;
 }
 .sidebar-menu a span{
 	font-weight: bold;

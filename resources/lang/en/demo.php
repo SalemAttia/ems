@@ -57,4 +57,6 @@ return [
     'name_of_training' => 'name of training',
     'training_center' => 'training center',
     'training_date' => 'training date',
+    'qualification' => 'qualification',
+    'study_area' => 'study area'
 ];

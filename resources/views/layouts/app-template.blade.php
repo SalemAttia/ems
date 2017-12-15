@@ -60,26 +60,6 @@
     $("#pop").popover();
     $("#pop2").popover();
 </script>
-      <script>
-      $(document).ready(function() {
-        //Date picker
-        $('#birthDate').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#hiredDate').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#from').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#to').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-    });
-</script>
+      
   </body>
 </html>

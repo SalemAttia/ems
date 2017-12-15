@@ -62,6 +62,7 @@
     $(".select2").select2();
   });
 </script>
+
 <script type="text/javascript">
 
 // Activate Next Step
@@ -165,8 +166,7 @@ $(document).ready(function(){
  });
 
 });
-</script>
-<script type="text/javascript">
+
 //next form
 $(document).ready(function(){
   var i=1;
@@ -183,9 +183,7 @@ $(document).ready(function(){
  });
 
 });
-</script>
 
-<script type="text/javascript">
 //next form
 $(document).ready(function(){
   var i=1;
@@ -203,9 +201,7 @@ $(document).ready(function(){
  });
 
 });
-</script>
-<!-- talant -->
-<script type="text/javascript">
+
 
 $(document).ready(function(){
   var i=1;
@@ -239,5 +235,7 @@ $(document).ready(function(){
     $(".textarea").wysihtml5();
   });
 </script>
+
+
 
 @endsection

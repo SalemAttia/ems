@@ -16,11 +16,25 @@
   <!-- Theme style -->
   @if ( Session('locale') == 'en')
   <link rel="stylesheet" href="{{asset('dist/css/en/AdminLTE.min.css')}}">
-  <link rel="stylesheet" href="{{asset('dist/css/en/mystyle.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/enstyle.css')}}">
+  <style type="text/css">
+    body::-webkit-scrollbar {
+  width: 5px;
+  display: block;
+}
+body::-webkit-scrollbar-track {
+  background: #ecf0f5;
+  margin-left: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #b39c6a;
+}
+  </style>
   @else
 
   <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
   <link rel="stylesheet" href="{{asset('dist/css/mystyle.css')}}">
+  
   @endif
 
   @yield('css')
@@ -33,7 +47,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini"  <?php if ( Session('locale') == 'en') echo 'dir="ltr"'; else echo 'dir="rtl"';?>>
+<body class="hold-transition skin-blue sidebar-mini"  <?php if ( Session('locale') == 'en') echo 'dir="ltr" lang="en"'; else echo 'dir="rtl" lang="ar"';?>>
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -99,26 +113,6 @@
     $("#pop").popover();
     $("#pop2").popover();
 </script>
-      <script>
-      $(document).ready(function() {
-        //Date picker
-        $('#birthDate').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#hiredDate').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#from').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-        $('#to').datepicker({
-          autoclose: true,
-          format: 'yyyy/mm/dd'
-        });
-    });
-</script>
+ 
   </body>
 </html>

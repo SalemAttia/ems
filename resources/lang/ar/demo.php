@@ -57,4 +57,7 @@ return [
     'name_of_training' => 'اسم الدورة',
     'training_center' => 'جهة التدريب',
     'training_date' => 'تاريخ الالتحاق',
+    'qualification' => 'المؤهلات العلمية',
+    'study_area' => 'جهة الدراسة'
+
 ];

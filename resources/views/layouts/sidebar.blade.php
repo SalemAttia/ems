@@ -46,7 +46,9 @@
         </li>
         <li class="<?php if($title == 'ادارة المستخدمين') echo "active";?>"><a href="{{ route('user-management.index') }}"><i class="fa fa-user"></i> <span>ادارة المستخدمين</span></a></li>
 
-       <li class="<?php if($title == 'ادارة الشركات') echo "active";?>"><a href="{{ route('company-management.index') }}"><i class="fa fa-bank"></i> <span>ادارة الشركات</span></a></li>        
+       <li class="<?php if($title == 'ادارة الشركات') echo "active";?>"><a href="{{ route('company-management.index') }}"><i class="fa fa-bank"></i> <span>ادارة الشركات</span></a></li>    
+
+        <li class="<?php if($title == 'استبيان') echo "active";?>"><a href="{{ url('admin/feedback') }}"><i class="fa fa-pencil-square-o"></i> <span>استبيانات</span></a></li>        
         
       </ul>
       <!-- /.sidebar-menu -->

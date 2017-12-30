@@ -41,6 +41,14 @@
 
     <!-- Main content -->
     <section class="content">
+        @if(Session::has('message'))
+        <center>
+             
+        <p class="alert {{ Session::get('alert-class') }}">
+        {{ Session::get('message') }}</p>
+       
+        </center>
+         @endif 
 
       <!-- Your Page Content Here -->
       

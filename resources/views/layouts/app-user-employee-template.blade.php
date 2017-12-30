@@ -73,6 +73,7 @@ body::-webkit-scrollbar-thumb{
 <script src="{{asset('js/vue.js')}}"></script>
 <script src="{{asset('js/vue-resource.js')}}"></script>
 <script src="{{asset('js/myvue.js')}}"></script>
+<script src="{{asset('js/notification.js')}}"></script>
 <!-- AdminLTE App -->
 <script type="text/javascript">
     $(document).ready(function(){

@@ -9,6 +9,25 @@
 |
 */
 
+/*notification*/
+Route::post('/sendNotification/{id}','feedback\NotificationController@makenotification');
+Route::get('/feedback','feedback\NotificationController@unread');
+Route::get('/markAsRead/{id}','feedback\NotificationController@markAsRead');
+Route::get('profile/markAsRead/{id}','feedback\NotificationController@markAsRead');
+
+//Delete notification 
+Route::get('/ndelete/{id}',function($id){
+  
+  $not = \Illuminate\Notifications\DatabaseNotification::find($id);
+  $not->delete();
+  return redirect('/allnot');
+});
+
+
+
+// end notification
+
+
 Route::get('/users/all','HomeController@custusers');
 Route::get('/sms/{code}','HomeController@sms');
 Route::get('/sms','HomeController@newsms');
@@ -25,6 +44,10 @@ Route::get('/',function(){
 });
 Route::get('/profile/api/division/{id}','HomeController@division');
 Route::get('/api/division/{id}','HomeController@division');
+Route::get('/feedback/{id}','feedback\Usersform@form');
+Route::post('/feedback/save','feedback\Usersform@formsave');
+
+Route::get('/allres','feedback\Usersform@all');
 
 
 Route::group(['prefix' => 'company'],function()
@@ -38,7 +61,7 @@ Route::group(['prefix' => 'company'],function()
 
 Route::group(['prefix' => 'admin'],function()
 {
-	Route::get('/employee-management/api/division/{id}','HomeController@division');
+Route::get('/employee-management/api/division/{id}','HomeController@division');
 Route::get('/', 'DashboardController@index');
 // Route::get('/system-management/{option}', 'SystemMgmtController@index');
 Route::get('/profile', 'ProfileController@index');
@@ -81,6 +104,12 @@ Route::get('download/cvs/{name}', 'EmployeeManagementController@download');
 Route::resource('system-management/degree', 'DegreeController');
 Route::resource('system-management/position', 'PositionController');
 Route::resource('system-management/social', 'socialController');
+
+//feedback
+Route::resource('feedback', 'feedback\FeedManegmentController');
+Route::get('sendform/{id}', 'feedback\FeedManegmentController@sendnotificationform');
+Route::post('makenotification', 'feedback\NotificationController@makenotification');
+
 });
 
 /*

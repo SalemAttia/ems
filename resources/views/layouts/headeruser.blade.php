@@ -18,6 +18,7 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
+
            <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu" style="<?php if ( Session('locale') == 'en') echo 'float: left; margin-top: 2%;'; else echo 'float: right';?>">
             <form action="{{route('langaugea')}}" method="post">
@@ -32,6 +33,7 @@
           </li>
           <!-- /.messages-menu -->
           
+
           
           
           <!-- User Account Menu -->
@@ -75,7 +77,37 @@
            </ul>
          </li>
          
-
+        <!-- Notifications Menu -->
+          <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            <?php 
+            $user = Auth::user();
+            $notification = $user->unreadnotifications;
+            ?>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{count($notification)}}</span>
+            </a>
+            <ul class="dropdown-menu" style="text-align: right;">
+            
+              <li class="header" dir="rtl">لديك {{count($notification)}} استبيان</li>
+              <li>
+                <!-- Inner Menu: contains the notifications -->
+                <ul class="menu">
+                @foreach ($notification as $value)
+                  <li><!-- start notification -->
+                 
+                    <a href="feedback/{{$value->data['name']}}">
+                      <i class="fa fa-users text-aqua"></i>{{$value->data['title']}}
+                    </a>
+                  </li>
+                  @endforeach
+                  <!-- end notification -->
+                </ul>
+              </li>
+             <!--  <li class="footer"><a href="#">View all</a></li> -->
+            </ul>
+          </li>
          
        </ul>
      </div>
